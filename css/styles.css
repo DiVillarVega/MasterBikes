@@ -1,0 +1,59 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fafafa;
+    padding: 20px;
+}
+
+.container {
+    display: flex;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.filters {
+    width: 250px;
+    background-color: #eeeeee;
+    border: 1px solid #eeeeee;
+    padding: 20px;
+    margin-bottom: 20px; /* Añade un margen inferior para separación */
+}
+
+.filters h2 {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+}
+
+.filter {
+    margin-bottom: 10px;
+}
+
+.filter h3 {
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+}
+
+.filter .options {
+    display: none; /* Oculta las opciones por defecto */
+    margin-left: 10px; /* Añade un margen a las opciones */
+}
+
+.filter .options label {
+    display: inline-block;
+    margin-bottom: 1px;
+}
+
+.content {
+    flex: 1;
+    background-color: #fafafa;
+    padding: 20px;
+    margin-left: 20px;
+    border: 1px solid #fafafa;
+}
