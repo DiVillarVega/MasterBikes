@@ -1,0 +1,59 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% load custom_filters %}
+
+{% block content %}
+    <!-- contenido principal -->
+    <main role="main">
+        <div class="container">
+            <section class="text center">
+                <h1 class="cute-font-regular neon">REGISTRO</h1>
+                <br>
+
+                <!-- Formulario de registro de cliente -->
+                <form method="POST" id="formulario_registro" enctype="multipart/form-data" class="white-text">
+                    {% csrf_token %}
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-4">
+                                {{ form_usuario|as_bootstrap_form:'help_text_visible=False' }}
+                            </div>
+
+                            <div class="col-sm-12 col-md-5">
+                                {{ form_perfil|as_bootstrap_form }}
+                            </div>
+                            
+                            <!-- foto de perfil -->
+                            <div class="col-sm-12 col-md-3">
+                                <br>
+                                <div class="row">
+                                    <div class="col-sm-12" style="height: 220px">
+                                        <img src="{% static 'core/img/perfil.webp'%}" alt="" class="user-image" id="cuadro-imagen">
+                                        <br>
+                                        <button class="btn btn-primary boton_registro" onclick="event.preventDefault(); document.getElementById('id_imagen').click();">Seleccionar imagen</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- fin foto perfil -->
+
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col text-center">
+                                <button type="submit" class="btn btn-primary boton_registro">Registrarse</button>
+                                <button type="reset" id="limpiar_formulario_registro" class="btn btn-primary boton_registro">Limpiar</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+            </section>
+        </div>
+    </main>
+{% endblock content %}
+
+{% block script %}
+    <script src="{% static 'core/js/validacion_registro.js'%}"></script>
+    <script src="{% static 'core/js/script.js'%}"></script>
+{% endblock script %}

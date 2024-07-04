@@ -1,0 +1,36 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% load custom_filters %}
+
+{% block content %}
+    <!-- contenido principal -->
+    <main role="main">
+        <div class="container">
+            <section class="text center">
+                <h1 class="cute-font-regular neon">INGRESAR</h1>
+                <br>
+
+                            <div class="row justify-content-center ">
+                                <form id="formulario_login" method="POST" class="col-5 border border-3 p-4 white-text">
+                            
+                                  {% csrf_token %} 
+                                  
+                                  <!-- Botones -->
+                                  {{ form|as_bootstrap_form }}
+                                  
+                                  <div class="text-center mt-4">
+                                    <button type="submit" class="btn btn-primary boton_registro"> Ingresar </button>
+                                  </div>
+                                </form>
+                            </div>
+
+            </section>
+        </div>
+    </main>
+    {% include 'common/combobox_usuarios.html' %}
+{% endblock content %}
+
+{% block script %}
+    <script src="{% static 'core/js/validacion_login.js'%}"></script>
+{% endblock script %}
+

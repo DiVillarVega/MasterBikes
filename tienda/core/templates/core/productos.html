@@ -1,0 +1,110 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% load custom_filters %}
+
+{% block content %}
+    <!-- contenido principal -->
+    <main role="main">
+        <div class="container">
+            <section class="text center">
+                <h1 class="cute-font-regular neon">MANTENEDOR DE PRODUCTOS</h1>
+                <br>
+
+                <!-- Formulario de registro de producto -->
+                <form method="POST" enctype="multipart/form-data" id="formulario_productos" action="" class="white-text">
+                    {% csrf_token %}
+                    <div class="container-fluid">
+                        <div class="row">
+                            <!-- campos del registro de producto -->
+                            <div class="col-sm-12 col-md-6 col-lg-8">
+                                {{ form.categoria|as_bootstrap_field }}
+                                {{ form.nombre|as_bootstrap_field }}
+                                {{ form.descripcion|as_bootstrap_field }}
+                            
+                                {{ form.precio|as_bootstrap_field }}
+                                {{ form.descuento_subscriptor|as_bootstrap_field }}
+                                {{ form.descuento_oferta|as_bootstrap_field }}
+                            </div>
+                            <!-- foto de perfil -->
+                            <div class="col-sm-12 col-md-6 col-lg-4">
+                                <br>
+                                {% comment %} <div class="image-container">
+                                    <img src="{% static 'core/img/perfil.webp'%}" alt="" class="user-image"/>
+                                </div> {% endcomment %}
+
+                                <div class="col-sm-12" style="height: 220px">
+                                    {% if form.instance.imagen %}
+                                        <img src="{{ form.instance.imagen.url }}" alt="" class="user-image" id="cuadro-imagen">
+                                    {% else %}
+                                        <img src="{% static 'core/img/sin_imagen.jpg' %}" alt="" class="user-image" id="cuadro-imagen">
+                                    {% endif %}   
+                                    <br> 
+                                    <button class="btn btn-primary boton_registro" onclick="event.preventDefault(); document.getElementById('id_imagen').click();"> Seleccionar imagen </button>  
+                                    {{ form.imagen }}
+                                </div>
+                            </div>
+                            <!-- fin foto perfil -->
+                        </div>
+                        <br>
+                    </div>
+                    <div class="row">
+                         <!-- AREA DE BOTONES -->
+                        <div class="mt-2 mb-3 text-center">
+
+                            <input class="btn btn-primary boton_registro" type="submit" value="Guardar">                 
+                            {% if form.instance.id %}
+                            <a class="btn btn-primary boton_registro"  href="{% url 'productos' 'eliminar' form.instance.id %}"> Eliminar </a>
+                            {% endif %}
+                    
+                        </div>
+                    </div>
+                </form>
+                                                
+                        <br><br>
+                        <!-- tabla godines -->
+                        <table id="tabla-principal" class="table table-hover">
+                            <thead>
+                                <th scope="col" class="text-center d-none d-lg-block d-lg-table-cell">ID</th>
+                                <th scope="col" class="text-center">Categoría</th>
+                                <th scope="col" class="text-center">Producto</th>
+                                <th scope="col" class="text-center">Descripción</th>
+                                <th scope="col" class="text-center">Precio</th>
+                                <th scope="col" class="text-center">%Desc Subscriptor</th>
+                                <th scope="col" class="text-center">%Desc Oferta</th>
+                                <th scope="col" class="text-center">Imagen</th>
+                                <th scope="col" class="text-center">Acciones</th>
+
+                            </thead>
+                            <tbody>
+                                {% for producto in productos %}
+                                <!-- Primera linea -->
+                                    <tr>
+                                        <td class="letra-titulo-producto3jajalol">{{ producto.id }}</td>
+                                        <td >{{ producto.categoria }}</td>
+                                        <td >{{ producto.nombre }}</td>
+                                        <td >{{ producto.descripcion }}</td>
+                                        <td >${{ producto.precio }}</td>
+                                        <td >{{ producto.descuento_subscriptor }}%</td>
+                                        <td >{{ producto.descuento_oferta }}%</td>
+                                        <td><img height="100px" src="{{ producto.imagen.url }}"></td>
+                                        <td><div class="btn-group">
+                                            <a href="{% url 'productos' 'actualizar' producto.id %}" class="btn btn-primary btn-sm boton_celeste"> Editar </a>
+                                            <form method="delete">
+                                                <a href="{% url 'productos' 'eliminar' producto.id %}" class="btn boton_rojo btn-sm"> Eliminar </a>
+                                            </form>
+                                        </div></td>
+                                    </tr>
+                                {% endfor %}
+                                
+                            </tbody>
+                        </table>
+            </section>
+        </div>
+    </main>
+{% endblock content %}
+
+{% block script %}
+    <script src="{% static 'core/js/validacion_productos.js'%}"></script>
+    <script src="{% static 'core/js/script.js'%}"></script>   
+{% endblock script %}
+

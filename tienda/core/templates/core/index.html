@@ -1,0 +1,125 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% load custom_filters %}
+
+{% block content %}
+
+    <br />
+    <br />
+    <!-- Contenido principal -->
+    <main role="main">
+      <div class="container">
+        <section class="text-center">
+          <div
+            id="carouselExampleIndicators"
+            class="carousel slide"
+            data-bs-ride="carousel"
+          >
+            <div class="carousel-indicators">
+              <button
+                type="button"
+                data-bs-target="#carouselExampleIndicators"
+                data-bs-slide-to="0"
+                class="active"
+                aria-current="true"
+                aria-label="Slide 1"
+              ></button>
+              <button
+                type="button"
+                data-bs-target="#carouselExampleIndicators"
+                data-bs-slide-to="1"
+                aria-label="Slide 2"
+              ></button>
+              <button
+                type="button"
+                data-bs-target="#carouselExampleIndicators"
+                data-bs-slide-to="2"
+                aria-label="Slide 3"
+              ></button>
+            </div>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="{% static 'core/img/carrusel1.jpg' %}" class="d-block w-100" alt="" />
+              </div>
+              <div class="carousel-item">
+                <img src="{% static 'core/img/carrusel2.jpg' %}" class="d-block w-100" alt="" />
+              </div>
+              <div class="carousel-item">
+                <img src="{% static 'core/img/carrusel3.jpg'%}" class="d-block w-100" alt="" />
+              </div>
+            </div>
+            <button
+              class="carousel-control-prev"
+              type="button"
+              data-bs-target="#carouselExampleIndicators"
+              data-bs-slide="prev"
+            >
+              <span
+                class="carousel-control-prev-icon"
+                aria-hidden="true"
+              ></span>
+              <span class="visually-hidden">Anterior</span>
+            </button>
+            <button
+              class="carousel-control-next"
+              type="button"
+              data-bs-target="#carouselExampleIndicators"
+              data-bs-slide="next"
+            >
+              <span
+                class="carousel-control-next-icon"
+                aria-hidden="true"
+              ></span>
+              <span class="visually-hidden">Siguiente</span>
+            </button>
+          </div>
+        </section>
+      </div>
+    </main>
+    <div class="containerpen">
+      <img src="{% static 'core/img/penguindance.gif' %}" alt="Pingüino caminando" id="pinguino" />
+    </div>
+    <br />
+    <br />
+    <!-- Productos de la tienda -->
+
+    <div class="album">
+      <div class="container">
+        <div id="product-item" class="row">
+          {% for producto in productos %}
+          <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3" id="mini_producto">
+            {% comment %} resaltado {% endcomment %}
+            <a href="{% url 'ficha' producto.id %}" class="card-link index_ficha">
+              <div class="card mb-4 box-shadow" style="border: 1px solid rgb(255, 255, 255); background-color: #ffffff; padding: 30px; width: 300px; height: 550px; margin: 0 auto;">
+                <div class="text-center">
+                  <img class="card-img-top thumbnail-product" src="/media/{{ producto.imagen }}" alt="" />
+                </div>
+                <div class="card-body">
+                  <div class="card-text">
+                    <div class="lead text-secondary fw-bold letra-normal-negra">{{ producto.html_estado|safe }}</div>
+                    <br />
+                    <div class="letra-titulo-producto">
+                    {{ producto.nombre }}
+                    </div>
+                    <br />
+                    {{ producto.html_precio|safe }}
+                    <br />
+                    <b>Descripción</b>
+                    <br />
+                    <div class="text-truncate">{{ producto.descripcion }}</div>
+                    <br />
+                    <b>{{ producto.html_stock }}</b>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    
+
+    
+
+{% endblock content %}

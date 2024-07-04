@@ -1,0 +1,20 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% load custom_filters %}
+
+{% block content %}
+    <div class="container">
+        <br>
+        <h1 class="cute-font-regular neon">ADMINISTRAR TIENDA</h1>
+        <p class="text-center" style="margin-bottom: 20px;">
+            <br><br>
+            <a class="letra" href="{% url 'usuarios' %}">Mantenedor de usuarios</a>
+            <br><br>
+            <a class="letra" href="productos.html">Mantenedor de productos</a>
+            <br><br>
+            <a class="letra" href="{% url 'ventas' %}">Historial de ventas</a>
+            <br><br>
+            <a class="letra" href="{% url 'bodega' %}">Mantenedor de bodega</a>
+        </p>
+    </div>
+{% endblock content %}

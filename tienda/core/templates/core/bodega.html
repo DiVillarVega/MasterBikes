@@ -1,0 +1,101 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% load custom_filters %}
+
+{% block content %}
+    <br>
+    <br>
+
+
+    <!-- index -->
+    <main role="main">
+        <div class="container">
+            <section class="text center">
+                <h1 class="cute-font-regular neon">MANTENEDOR DE BODEGA</h1>
+                <br>
+
+                
+                <form id="form" method="POST" class="white-text">
+                    {% csrf_token %}
+                    <div class="container">
+                        <div class="row">
+                            <!-- Columna para los campos del formulario -->
+                            <div class="col-md-8">
+                                {{ form|as_bootstrap_form }}
+
+                                <div style="display: flex; justify-content: flex-end;">
+                                    <button type="submit" class="btn btn-primary boton_registro">Agregar</button>
+                                </div>
+                            </div>
+                            <!-- Columna para la imagen -->
+                            <div class="col-md-4 text-center">
+                                <img id="cuadro-imagen" src="{% static 'core/img/sin_imagen.jpg' %}" class="img-fluid">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <br><br>
+
+                <!-- AREA DE TABLA DE PRODUCTOS -->
+            
+                {% if productos %}
+                    
+                    <table id="tabla-principal" class="table table-hover">
+                        <thead>
+                            <!-- AREA DE TITULOS DE LA TABLA -->
+                            <tr class>
+                                <th> Imagen </th>
+                                <th> ID </th>
+                                <th> Categoría </th>
+                                <th> Nombre </th>
+                                <th> Estado </th>
+                                <th> Acción </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- AREA DE FILAS DE PRODUCTOS -->
+                            {% for producto in productos %}
+                                <tr>
+                                    <td>
+                                        <img src="/media/{{ producto.imagen }}" class="producto-sm" alt="">
+                                    </td>
+                                    <td>                                                                                
+                                        {{ producto.bodega_id }}
+                                    </td>
+                                    <td>
+                                        {{ producto.nombre_categoria }}
+                                    </td>
+                                    <td>
+                                        {{ producto.nombre_producto }}
+                                    </td>
+                                    <td>
+                                        {{ producto.estado }}
+                                    </td>
+                                
+
+                                    <!-- Botón de eliminar producto de bodega, se activa sólo para productos no vendidos -->
+                                    <td>
+                                        {% if producto.estado == 'En bodega' %}
+                                            <a href="{% url 'eliminar_producto_en_bodega' producto.bodega_id %}" 
+                                                class="btn boton_rojo btn-sm"> Eliminar </a>
+                                        {% else %}
+                                            <a href="{% url 'eliminar_producto_en_bodega' producto.bodega_id %}" 
+                                                class="btn boton_gris btn-sm disabled"> Eliminar </a>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+            
+                {% endif %}
+      </section>
+    </div>
+  </main>
+{% endblock content %}
+
+{% block script %}
+    <input type="hidden" id="url_obtener_productos" value="{% url 'obtener_productos' %}">
+    <script src="{% static 'core/js/validacion_bodega.js'%}"></script>
+    <script src="{% static 'core/js/script.js'%}"></script>
+{% endblock script %}

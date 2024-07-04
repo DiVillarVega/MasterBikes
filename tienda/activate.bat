@@ -1,0 +1,1 @@
+call C:\ProyectosDjango\MasterBikes\tienda\.venv\Scripts\activate.bat

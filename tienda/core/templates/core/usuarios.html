@@ -1,0 +1,120 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% load custom_filters %}
+
+{% block content %}
+    <!-- Contenido principal -->
+    <main role="main">
+        <div class="container">
+            <section class="text center">
+                <h1 class="cute-font-regular neon">MANTENEDOR DE USUARIOS</h1>
+                <br>
+                <!-- Formulario de registro de cliente -->
+                <form method="POST" id="formulario_usuarios" enctype="multipart/form-data" class="white-text">
+                  {% csrf_token %}
+                  <div class="container-fluid">
+                      <div class="row">
+                          <div class="col-sm-12 col-md-4">
+                              {{ form_usuario|as_bootstrap_form:'help_text_visible=False' }}
+                          </div>
+
+                          <div class="col-sm-12 col-md-5">
+                              {{ form_perfil|as_bootstrap_form }}
+                          </div>
+
+                          <div class="col-sm-12 col-md-3">
+                            <br>
+                            <div class="row">
+                              <div class="col-sm-12" style="height: 220px">
+                                {% if form_perfil.instance.imagen %}
+                                    <img src="{{ form_perfil.instance.imagen.url }}" alt="" class="user-image" id="cuadro-imagen">
+                                {% else %}
+                                    <img src="{% static 'core/img/perfil.webp' %}" alt="" class="user-image" id="cuadro-imagen">
+                                {% endif %}
+                                
+                                <button class="btn btn-primary boton_registro" onclick="event.preventDefault(); document.getElementById('id_imagen').click();">Seleccionar imagen</button>
+                            </div>
+                            </div>
+                        </div>
+
+                                    <!-- AREA DE BOTONES -->
+                                    <div class="mt-2 text-center">
+                                      
+                                      <button type="submit" class="btn btn-primary boton_registro"> Guardar </button>
+
+                                      <a href="{% url 'usuarios' 'crear' '0' %}" class="btn btn-primary boton_registro"> Nuevo </a>
+
+                                      {% if form_usuario.instance.id %}
+                                        <a class="btn btn-primary boton_registro" href="{% url 'usuarios' 'eliminar' form_usuario.instance.id %}"> Eliminar </a>
+                                      {% endif %}
+                                    
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+  <!-- AREA DE TABLA DE USUARIOS -->
+
+  {% if usuarios %} 
+
+    <table id="tabla-principal" class="table table-hover">
+      <thead>
+        <tr>
+          <th> ID </th>
+          <th> Cuenta </th>
+          <th> Tipo usuario </th>
+          <th> Nombre </th>
+          <th> Apellidos </th>
+          <th> Correo </th>
+          <th> RUT </th>
+          <th> Subscrito </th>
+          <th> Imagen </th>
+          <th> Acciones </th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for usuario in usuarios %}
+          
+
+          <td>{{usuario.id}}</td>
+          <td>{{usuario.username}}</td>
+          <td>{{usuario.perfil.tipo_usuario}}</td>
+          <td>{{usuario.first_name}}</td>
+          <td>{{usuario.last_name}}</td>
+          <td>{{usuario.email}}</td>
+          <td>{{usuario.perfil.rut}}</td>
+          
+            <td> {% if usuario.perfil.subscrito %} Sí {% else %} No {% endif %} </td>
+            <td>
+              <img src="{{ usuario.perfil.imagen.url }}" class="usuario-sm" alt="">
+            </td>
+            <td>
+              <div class="btn-group">
+                <a href="{% url 'usuarios' 'actualizar' usuario.id %}" class="btn btn-primary btn-sm boton_celeste"> Editar </a>
+                <a href="{% url 'usuarios' 'eliminar' usuario.id %}" class="btn btn-danger btn-sm boton_rojo"> Eliminar </a>
+                <form action="{% url 'cambiar_password' %}" method="post" id="form_{{ usuario.username }}">
+                  {% csrf_token %}
+                  <input type="hidden" id="username" name="username" value="{{ usuario.username }}">
+                  <button class="btn btn-info btn-sm boton_gris" id="id_generar_password" onclick="document.getElementById('form_{{ usuario.username }}').submit();"> Contraseña </button>
+                </form>
+              </div>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  
+
+  
+  {% endif %} 
+            </section>
+        </div>
+    </main>
+{% endblock content %}
+
+{% block script %}
+    <script src="{% static 'core/js/validacion_usuarios.js'%}"></script>
+    <script src="{% static 'core/js/script.js'%}"></script>
+{% endblock script %}
