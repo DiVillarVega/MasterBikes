@@ -27,6 +27,6 @@ echo.
 echo Presiona [ENTER] para crear y abrir el archivo "tienda_diagrama_clases.png"
 echo.
 pause
-call C:\ProyectosDjango\tienda\.venv\Scripts\activate.bat
+call C:\ProyectosDjango\MasterBikes\.venv\Scripts\activate.bat
 call python manage.py graph_models -a -o tienda_diagrama_clases.png
 call tienda_models.png
