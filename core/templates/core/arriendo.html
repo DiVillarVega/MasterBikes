@@ -1,0 +1,57 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% load custom_filters %}
+
+{% block content %}
+
+    <br />
+    <br />
+    <!-- Contenido principal -->
+    <main role="main">
+    <div class="containerpen">
+      <img src="{% static 'core/img/bicirodante.gif' %}" alt="Pingüino caminando" id="pinguino" />
+    </div>
+    <br />
+    <br />
+    <!-- Productos de la tienda -->
+
+    <div class="album">
+      <div class="container">
+        <div id="product-item" class="row">
+          {% for producto in productos %}
+          <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3" id="mini_producto">
+            {% comment %} resaltado {% endcomment %}
+            <a href="{% url 'ficha' producto.id %}" class="card-link index_ficha">
+              <div class="card mb-4 box-shadow" style="border: 1px solid rgb(#dcdcdc); background-color: #ffffff; padding: 30px; width: 300px; height: 550px; margin: 0 auto;">
+                <div class="text-center">
+                  <img class="card-img-top thumbnail-product" src="/media/{{ producto.imagen }}" alt="" />
+                </div>
+                <div class="card-body">
+                  <div class="card-text">
+                    <div class="lead text-secondary fw-bold letra-normal-negra">{{ producto.html_estado|safe }}</div>
+                    <br />
+                    <div class="letra-titulo-producto">
+                    {{ producto.nombre }}
+                    </div>
+                    <br />
+                    {{ producto.html_precio|safe }}
+                    <br />
+                    <b>Descripción</b>
+                    <br />
+                    <div class="text-truncate">{{ producto.descripcion }}</div>
+                    <br />
+                    <b>{{ producto.html_stock }}</b>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    
+
+    
+
+{% endblock content %}

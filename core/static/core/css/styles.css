@@ -513,3 +513,170 @@ html body {
   width:  82px;
   height: 70px;
 }
+
+
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #fff;
+  border-bottom: 1px solid #ccc;
+}
+
+.navbar-left .logo {
+  height: 50px;
+}
+
+.navbar-center {
+  display: flex;
+  align-items: center;
+}
+
+
+.search-bar {
+  width: 300px;
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.search-button {
+  background-color: #8bc24a;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  margin-left: 0.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.search-button i {
+  color: #fff;
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+}
+
+.nav-link {
+  margin-right: 20px;
+  text-decoration: none;
+  color: #000;
+  font-weight: bold;
+}
+
+.nav-icon {
+  margin-right: 20px;
+  color: #000;
+  position: relative;
+  text-decoration: none;
+}
+
+.nav-icon i {
+  font-size: 24px;
+}
+
+.navbar-right .nav-link, .navbar-right .nav-icon {
+  margin-left: 1rem;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.navbar-right .badge {
+  position: absolute;
+  top: -5px;
+  right: -10px;
+  background-color: #8bc24a;
+  color: white;
+  border-radius: 50%;
+  padding: 2px 6px;
+  font-size: 0.8rem;
+}
+
+.badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background-color: #8bc24a;
+  color: #fff;
+  border-radius: 50%;
+  padding: 2px 6px;
+  font-size: 12px;
+}
+
+.categories {
+  display: flex;
+  justify-content: center;
+  padding: 20px 0;
+  background-color: #f8f8f8;
+  border-bottom: 1px solid #ddd;
+}
+
+
+.category {
+  padding: 10px 20px;
+  margin: 0 10px;
+  text-decoration: none;
+  color: #000;
+  border: 2px solid #000;
+  text-align: center;
+  font-weight: bold;
+}
+
+.category.active {
+  color: #8bc24a;
+  border-color: #8bc24a;
+  font-weight: bold;
+}
+
+footer {
+  background-color: #f8f8f8;
+  padding: 1rem 0;
+  border-top: 1px solid #ddd;
+}
+footer p {
+  margin: 0;
+  color: #333;
+}
+footer a {
+  color: #007bff;
+  text-decoration: none;
+}
+.bi {
+  vertical-align: -.125em;
+  fill: currentColor;
+}
+
+.login-button {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  color: black;
+  border: 1px solid #ddd;
+  padding: 0.5rem 1rem;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+.login-button img {
+  margin-right: 0.5rem;
+}
+.login-button:hover {
+  background-color: #f0f0f0;
+}
+
+.btn_pequeño_negro{
+  background-color: black;
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+}
+
