@@ -3,6 +3,13 @@
   border: 1px solid red;
 }  */
 
+.mini_titulo{
+  color: #8d8d8d;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+
 .card-link {
   display: block;
   text-decoration: none;
@@ -28,14 +35,20 @@
   font-weight: bold;
 }
 
-body {  
-  background: linear-gradient(to right, #180f28, #4357ab, #130823);
+html body {  
+  background-color: #fafafa;
 }
 
 .logo {
   width: 40px;
   margin-right: 10px;
 }
+
+.logo2 {
+  height: 80px;
+  margin-right: 10px;
+}
+
 
 .thumbnail-product {
   height: 150px !important;
@@ -56,15 +69,14 @@ body {
 }
 
 .cuadro_login {
-  border: 1px solid rgb(255, 255, 255);
+  border: 5px solid rgb(#bcbcbc);
   padding: 40px;
   width: 500px;
   height: auto;
-  background-color: none;
+  background-color: white;
   margin: 0 auto;
-  box-shadow:
-  0 0 10px rgb(255, 255, 255),
-  0 0 1cap rgba(0,178,255,1);
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center; /* Centra verticalmente */
 }
 
 .cuadro_neon_pequeño {
@@ -89,7 +101,7 @@ body {
 }
 
 .cuadro_blanco_index {
-  border: 1px solid rgb(255, 255, 255);
+  border: 1px solid rgb(#dcdcdc);
   background-color: #ffffff;
   padding: 30px;
   width: 300px;
@@ -104,10 +116,6 @@ body {
   0 0 1cap rgba(0,178,255,1);
 }
 
-.titulos{
-  text-align: center;
-  color: rgb(99, 99, 248);
-}
 
 .opcion{
   display: inline-block;
@@ -153,21 +161,30 @@ body {
 
 
 .boton_registro{
-  background: linear-gradient(to right, #022267,#044ff2, #022267); 
+  background-color: #8bc24a !important; 
   border: none; 
-  color: rgb(255, 255, 255) !important; 
+  color: rgb(0, 0, 0); 
   padding: 10px 20px; 
   text-align: center; 
+  font-weight: bold;
   display: inline-block;
   width: auto;  
 }
 
 .boton_registro:hover{
-  background: linear-gradient(to right, #010f2e,#023093, #010f2e); 
+  background-color: #72ad2e !important; 
   box-shadow:
-  0 0 5px rgba(0,178,255,1),
-  0 0 20px rgba(38,104,127,1);
+  0 0 10px rgb(147, 220, 37),
 }
+
+.container2 {
+  display: flex;
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center; /* Centra verticalmente */
+}
+
+
+
 
 
 
@@ -247,15 +264,9 @@ body {
 .index_ficha:hover{ 
   background: none;  
 	box-shadow:
-		0 0 5px rgba(0,178,255,1),
-		0 0 10px rgba(0,178,255,1),
-		0 0 15px rgba(0,178,255,1),
-		0 0 20px rgba(38,104,127,1),
-		0 0 25px rgba(38,104,127,1),
-		0 0 30px rgba(38,104,127,1),
-		0 0 35px rgba(38,104,127,1),
-		0 0 40px rgba(38,104,127,1),
-		0 0 45px rgba(38,104,127,1);
+		0 0 5px rgba(90,96,105),
+		0 0 10px rgba(47,47,49),
+		0 0 15px rgb(26, 26, 27),
 }
 
 #cuadro-imagen {
@@ -313,14 +324,14 @@ body {
   position: absolute;
   overflow: hidden;
   width: 100%; /* Ancho del contenedor */
-  height: 50px; /* Alto del contenedor */
+  height: 80px; /* Alto del contenedor */
 }
 
 #pinguino {
   position: absolute;
   top: 4px;
   left: -100px;
-  width: 40px; /* Ancho del pingüino */
+  width: 80px; /* Ancho del pingüino */
   height: auto; /* Altura automática para mantener la proporción */
   animation: caminar 20s linear infinite;
 }

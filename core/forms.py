@@ -47,8 +47,8 @@ class BodegaForm(Form):
 
 # El formulario de ingreso está listo, no necesitas modificarlo
 class IngresarForm(Form):
-    username = forms.CharField(widget=forms.TextInput(), label="Cuenta")
-    password = forms.CharField(widget=forms.PasswordInput(), label="Contraseña")
+    username = forms.CharField(widget=forms.TextInput(), label="")
+    password = forms.CharField(widget=forms.PasswordInput(), label="")
     class Meta:
         fields = ['username', 'password']
 
