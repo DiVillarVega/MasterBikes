@@ -70,3 +70,10 @@ $(document).ready(function() {
   }});
 
 
+// script.js o incluido en tu template
+
+$(document).ready(function(){
+  $('.accordion').on('click', function() {
+      $(this).next('.panel').toggleClass('show');
+  });
+});

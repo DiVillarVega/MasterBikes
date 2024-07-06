@@ -13,15 +13,19 @@
                         <img src="{% static 'core/img/mdemaster.png' %}" style="height: 100px;" alt="">
                         {% csrf_token %}
                         <!-- Botones -->
-                        {{ form|as_bootstrap_form }}
-                        <div class="text-center mt-4">
-                            <button type="submit" class="btn boton_registro">Iniciar sesión</button>
+                        <div class="input-group">
+                            {{ form.username }}
+                            <label for="username" class="label">Cuenta</label>
                         </div>
+                        <div class="input-group">
+                            {{ form.password }}
+                            <label for="password" class="label">Contraseña</label>
+                        </div>
+                        <button class="btn boton_registro" type="submit">Ingresar</button>
                         <br>
-                        <a href="#" class="">¿Olvidaste tu contraseña?</a>
+                        <a href="#" class="align-items-center letra-azuul">¿Olvidaste tu contraseña?</a>
                     </form>
                 </div>
-
     </main>
     {% include 'common/combobox_usuarios.html' %}
 {% endblock content %}

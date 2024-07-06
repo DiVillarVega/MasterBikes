@@ -2,27 +2,156 @@
 {% load static %}
 {% load custom_filters %}
 
+{% block style %}
+<style>
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fafafa;
+    padding: 10px;
+}
+
+.container2 {
+    display: flex;
+    margin: 10px;
+}
+
+.filters {
+    background-color: #eeeeee;
+    border: 1px solid #eeeeee;
+    width: 200px;
+    height: auto;
+    padding: 10px;
+    margin-bottom: 20px; /* Añade un margen inferior para separación */
+}
+
+.filters h2 {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+}
+
+.filter {
+    margin-bottom: 10px;
+}
+
+.filter h3 {
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+}
+
+.filter .options {
+    display: none; /* Oculta las opciones por defecto */
+    margin-left: 10px; /* Añade un margen a las opciones */
+}
+
+.filter .options label {
+    display: inline-block;
+    margin-bottom: 1px;
+}
+
+.content {
+    flex: 1;
+    background-color: #fafafa;
+    margin-left: 10px;
+    border: 1px solid #fafafa;
+}
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 450px; /* Ajusta esta altura según tus necesidades */
+  }
+
+  .card img {
+    max-width: 100%;
+    max-height: 200px;
+    object-fit: cover;
+    width: 200px;
+    height: 200px;
+  }
+
+  .card-body {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .card-text {
+    flex-grow: 1;
+  }
+
+
+  .ficha{
+    background-color: #78a941;
+    padding: 20px;
+    margin: 20px;
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 80%;
+    display: inline-block;
+    
+  }
+
+#spanFicha{
+    display: inline-block;
+    vertical-align: top;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+#spanFicha2{
+    display: inline-block;
+    vertical-align: center;
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+#fotoFicha{
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 20px;
+    width: 250px;
+}
+
+.precio{
+    color: white;
+    font-size: 40px;
+    display: inline-block;
+    font-weight: bold;
+  }
+</style>
+{% endblock %}
+
 {% block content %}
 
-    <br />
-    <br />
-    <!-- Contenido principal -->
-    <main role="main">
-    <div class="containerpen">
-      <img src="{% static 'core/img/bicirodante.gif' %}" alt="Pingüino caminando" id="pinguino" />
-    </div>
-    <br />
-    <br />
-    <!-- Productos de la tienda -->
 
+    <!-- Contenido principal -->
+
+
+      <div class="moveraladerecha">
+      <div class="custom-div">
+        <p class="mini-titulo">Arriendo de Bicicletas</p>
+      </div>
+    {% comment %} <div class="containerpen">
+      <img src="{% static 'core/img/bicirodante.gif' %}" alt="Pingüino caminando" id="pinguino" />
+    </div> {% endcomment %}
+    <!-- Productos de la tienda -->
     <div class="album">
       <div class="container">
         <div id="product-item" class="row">
           {% for producto in productos %}
-          <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3" id="mini_producto">
+          <div class="col-sm-12 col-md-6 col-lg-3 col-xl-3" id="mini_producto">
             {% comment %} resaltado {% endcomment %}
             <a href="{% url 'ficha' producto.id %}" class="card-link index_ficha">
-              <div class="card mb-4 box-shadow" style="border: 1px solid rgb(#dcdcdc); background-color: #ffffff; padding: 30px; width: 300px; height: 550px; margin: 0 auto;">
+              <div class="card mb-4 box-shadow" style="border: 1px solid rgb(#dcdcdc); background-color: #ffffff; padding: 30px; width: 270px; height: 550px; margin: 0 3px;">
                 <div class="text-center">
                   <img class="card-img-top thumbnail-product" src="/media/{{ producto.imagen }}" alt="" />
                 </div>
@@ -50,8 +179,11 @@
         </div>
       </div>
     </div>
-    
-
-    
+  </div>
 
 {% endblock content %}
+
+
+{% block script %}
+    <script src="{% static 'core/js/script.js' %}"></script>
+{% endblock script %}

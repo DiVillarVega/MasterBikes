@@ -46,11 +46,55 @@ class BodegaForm(Form):
         fields = '__all__'
 
 # El formulario de ingreso está listo, no necesitas modificarlo
-class IngresarForm(Form):
-    username = forms.CharField(widget=forms.TextInput(), label="")
-    password = forms.CharField(widget=forms.PasswordInput(), label="")
+
+
+
+
+
+
+
+
+
+# class IngresarForm(Form):
+#     username = forms.CharField(widget=forms.TextInput(), label="Cuenta")
+#     password = forms.CharField(widget=forms.PasswordInput(), label="Contraseña")
+#     class Meta:
+#         fields = ['username', 'password']
+class IngresarForm(forms.Form):
+    username = forms.CharField(
+        widget=forms.TextInput(attrs={
+            'class': 'input',
+            'required': True,
+            'name': 'username'
+        }),
+        label="Cuenta"
+    )
+    password = forms.CharField(
+        widget=forms.PasswordInput(attrs={
+            'class': 'input',
+            'required': True,
+            'name': 'password'
+        }),
+        label="Contraseña"
+    )
+    
     class Meta:
         fields = ['username', 'password']
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # PARA LA PAGINA DE REGISTRO DE NUEVO CLIENTE:
 # Crea RegistroUsuarioForm como una clase que hereda de UserCreationForm
