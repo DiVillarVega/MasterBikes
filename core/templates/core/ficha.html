@@ -6,46 +6,46 @@
     {% comment %} <h1 class="">FICHA DE PRODUCTO</h1> {% endcomment %}
     <!--FICHA DISPONIBLE-->
 
-    <form method="post" id="formulario-ficha" class=" cuadro_white">        
+    <form method="post" id="formulario-ficha" class="cuadro_ficha">        
         {% csrf_token %}
+        <div class="container-fluid">
+            <div class="row">
 
-        <div class="row">
+                <div class="col-md-7">
+                    <div class="letra-titulo-producto2 ">
+                        {{ nombre }}
+                    </div> <br>
 
-            <div class="col-md-6">
-                <div class="letra-titulo-producto2 ">
-                    {{ nombre }}
-                </div> <br>
+                    <img
+                    class="card-img-top thumbnail-product2"
+                    src="/media/{{ imagen }}"
+                    alt="" /> <br>
 
-                <img
-                class="card-img-top thumbnail-product2"
-                src="/media/{{ imagen }}"
-                alt="" /> <br>
-
-                <div class="letra-titulo-producto3jajalol">
-                   Descripción
-                </div>{{ descripcion }}  <br>
-            </div>
-
-            <div class="col-md-6">
-
-                {{ html_precio|safe }}  <br><br>
-            
-                {{ html_stock|safe }}  <br><br>
-
-                <div>
-                    <input type="hidden" id="accion">
-                    <a href="{% url 'comprar_ahora' %}" class="btn btn-primary ancho-160px boton_registro"> 
-                        Comprar ahora 
-                    </a>
-                    <a href="{% url 'agregar_producto_al_carrito' id %}" class="btn btn-secondary ancho-160px boton_registro"> 
-                        Agregar al carrito 
-                    </a>
+                    <div class="letra-titulo-producto3jajalol">
+                    Descripción
+                    </div>{{ descripcion }}  <br>
                 </div>
 
-                {{ html_estado|safe }}  <br>
-            </div>    
+                <div class="col-md-4 cuadro_precio_ficha">
 
-        </div>
+                    {{ html_precio|safe }}  <br><br>
+                
+                    {{ html_stock|safe }}  <br><br>
+
+                    <div>
+                        <input type="hidden" id="accion">
+                        <a href="{% url 'agregar_producto_al_carrito' id %}" class="boton_registro2"> 
+                            Agregar al carrito 
+                            <img src="{% static 'core/img/carrito-boton.png' %}" alt="" width="24" height="24">    
+                        </a>
+
+                    </div>
+
+                    {{ html_estado|safe }}  <br>
+                </div>    
+
+            </div>
+        </div>    
         <br>
 
     </form>
