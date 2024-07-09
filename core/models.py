@@ -23,8 +23,21 @@ class Categoria(models.Model):
             'accion_actualizar': 'actualizar la Categoría'
         }
 
+class Talla(models.Model):
+    nombre = models.CharField(max_length=100, blank=False, null=False, verbose_name='Nombre talla')
+    
+    class Meta:
+        db_table = 'Talla'
+        verbose_name = "Talla de producto"
+        verbose_name_plural = "Tallas de productos"
+        ordering = ['nombre']
+    
+    def __str__(self):
+        return f'{self.nombre}'
+
 class Producto(models.Model):
     categoria = models.ForeignKey(Categoria, on_delete=models.DO_NOTHING, verbose_name='Categoría')
+    talla = models.ForeignKey(Talla, on_delete=models.DO_NOTHING, verbose_name='Talla')
     nombre = models.CharField(max_length=100, blank=False, null=False, verbose_name='Nombre producto')
     descripcion = models.CharField(max_length=800, blank=False, null=False, verbose_name='Descripción')
     precio = models.IntegerField(blank=False, null=False, verbose_name='Precio')
