@@ -70,7 +70,18 @@ html body {
 
 .cuadro_login {
   border: 5px solid rgb(#bcbcbc);
-  padding: 40px;
+  padding: 30px;
+  width: 450px;
+  height: auto;
+  background-color: white;
+  margin: 0 auto;
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center; /* Centra verticalmente */
+}
+
+.cuadro_login2 {
+  border: 5px solid rgb(#bcbcbc);
+  padding: 20px;
   width: 500px;
   height: auto;
   background-color: white;
@@ -78,6 +89,7 @@ html body {
   justify-content: center; /* Centra horizontalmente */
   align-items: center; /* Centra verticalmente */
 }
+
 
 .cuadro_neon_pequeño {
   border: 1px solid rgb(255, 255, 255);
@@ -162,13 +174,14 @@ html body {
 
 .boton_registro{
   background-color: #8bc24a !important; 
-  border: none; 
+  border: none;
   color: rgb(0, 0, 0); 
-  padding: 10px 20px; 
-  text-align: center; 
-  font-weight: bold;
+  text-align: center;
+  font-weight: bold !important;
   display: inline-block;
-  width: auto;  
+  width: 380px; 
+  padding: 0.5rem;
+  border-radius: 15px;
 }
 
 .boton_registro:hover{
@@ -180,6 +193,11 @@ html body {
 .letra-azuul {
   color: #007bff;
   text-decoration: none;
+}
+
+.letra-azuul-bold {
+  color: #007bff;
+  font-weight: bold;
 }
 
 .container2 {
@@ -684,7 +702,6 @@ body {
 
 
 footer {
-  background-color: #010101;
   padding: 1rem 0;
   border-top: 1px solid #ddd;
 }

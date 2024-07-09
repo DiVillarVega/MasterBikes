@@ -6,11 +6,18 @@
     <!-- contenido principal -->
     <main role="main">
 
-                <h1 class="mini-titulo">Inicio de Sesión</h1>
-                <br>
+        <div class="custom-div">
+            <p class="mini-titulo">Inicio de sesión</p>
+          </div>
+          <section class="text center" style="background-color: #f1f1f1">
+
+                <br><br>
                 <div class="justify-content-center">
                     <form id="formulario_login" method="POST" class="border align-items-center cuadro_login">
-                        <img src="{% static 'core/img/mdemaster.png' %}" style="height: 100px;" alt="">
+                        <div class="text-center">
+                            <img src="{% static 'core/img/mdemaster.png' %}" style="height: 100px;" alt="">
+                        </div>  
+                        <br><br>   
                         {% csrf_token %}
                         <!-- Botones -->
                         <div class="input-group">
@@ -21,13 +28,26 @@
                             {{ form.password }}
                             <label for="password" class="label">Contraseña</label>
                         </div>
-                        <button class="btn boton_registro" type="submit">Ingresar</button>
-                        <br>
-                        <a href="#" class="align-items-center letra-azuul">¿Olvidaste tu contraseña?</a>
+
+                        <div class="text-center mt-4">
+                            <button class="boton_registro" type="submit">Iniciar sesión</button>
+                            <br><br>
+                            <a href="#" class="align-items-center letra-azuul">¿Olvidaste tu contraseña?</a>
+                        </div>    
                     </form>
+
+                    <br>
+
+                    <div class="border cuadro_login2">
+                        <div class="text-center">
+                            ¿No tienes cuenta? <a href="{% url 'registro' %}" class="letra-azuul-bold align-items-center">Regístrate</a>
+                        </div>    
+                    </div>    
+                    {% include 'common/combobox_usuarios.html' %}
                 </div>
+
+            </section>    
     </main>
-    {% include 'common/combobox_usuarios.html' %}
 {% endblock content %}
 
 {% block script %}
