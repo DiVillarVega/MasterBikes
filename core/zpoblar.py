@@ -204,7 +204,7 @@ def poblar_bd(test_user_email=''):
     print('Tallas creadas correctamente')
 
     productos_data = [
-        # Categoría "Acción" (8 juegos)
+        # Categoría "MTB" (8 juegos)
         {
             'id': 1,
             'categoria': Categoria.objects.get(id=1),
@@ -293,7 +293,7 @@ def poblar_bd(test_user_email=''):
             'descuento_oferta': 15,
             'imagen': 'productos/000008.jpg'
         },
-        # Categoría "Aventura" (4 juegos)
+        # Categoría "Ruta" (4 juegos)
         {
             'id': 9,
             'categoria': Categoria.objects.get(id=2),
@@ -338,7 +338,7 @@ def poblar_bd(test_user_email=''):
             'descuento_oferta': 15,
             'imagen': 'productos/000012.jpg'
         },
-        # Categoría "Estrategia" (4 juegos)
+        # Categoría "Urbana" (4 juegos)
         {
             'id': 13,
             'categoria': Categoria.objects.get(id=3),
@@ -383,7 +383,7 @@ def poblar_bd(test_user_email=''):
             'descuento_oferta': 10,
             'imagen': 'productos/000016.jpg'
         },
-        # Categoría "RPG" (4 juegos)
+        # Categoría "BMX" (4 juegos)
         {
             'id': 17,
             'categoria': Categoria.objects.get(id=4),
