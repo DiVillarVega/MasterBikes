@@ -4,74 +4,112 @@
 
 {% block style %}
 <!-- Puedes añadir tus estilos CSS aquí -->
-{% endblock %}
+<style>
+    .filtro-lateral {
+        float: left;
+        width: 20%;
+        margin-left: 30px;
+        background-color: #dcdcdc;
+        padding: 20px;
+    }
+
+    .productos {
+        float: right;
+        width: 75%;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .custom-div {
+        margin-bottom: 20px;
+    }
+
+    .btn-primary {
+        background-color: #8bc24a;
+        border-color: #8bc24a;
+        color: black;
+    }
+
+    .btn-primary:hover {
+        background-color: #72ad2e ;
+        border-color: #72ad2e ;
+    }
+</style>
+{% endblock style %}
 
 {% block content %}
 <!-- Contenido principal -->
-<div class="moveraladerecha">
-    <div class="custom-div">
-        <p class="mini-titulo">Arriendo de Bicicletas</p>
-    </div>
-
-    <!-- Filtro de búsqueda -->
-    <form method="GET" action="{% url 'arriendo' %}">
-        <div class="form-group">
-            <label for="categoria">Categoría:</label>
-            <select name="categoria" id="categoria" class="form-control">
-                <option value="">Todas</option>
-                {% for categoria in categorias %}
-                    <option value="{{ categoria.id }}" {% if request.GET.categoria == categoria.id|stringformat:"s" %}selected{% endif %}>{{ categoria.nombre }}</option>
-                {% endfor %}
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="talla">Talla:</label>
-            <select name="talla" id="talla" class="form-control">
-                <option value="">Todas</option>
-                {% for talla in tallas %}
-                    <option value="{{ talla.id }}" {% if request.GET.talla == talla.id|stringformat:"s" %}selected{% endif %}>{{ talla.nombre }}</option>
-                {% endfor %}
-            </select>
-        </div>
-        <button type="submit" class="btn btn-primary">Filtrar</button>
-    </form>
-
-    <!-- Productos de la tienda -->
-    <div class="album">
-        <div class="container">
-            <div id="product-item" class="row">
-                {% for producto in productos %}
-                <div class="col-sm-12 col-md-6 col-lg-3 col-xl-3" id="mini_producto">
-                    <a href="{% url 'ficha' producto.id %}" class="card-link index_ficha">
-                        <div class="card mb-4 box-shadow" style="border: 1px solid #dcdcdc; background-color: #ffffff; padding: 30px; width: 270px; height: 550px; margin: 0 3px;">
-                            <div class="text-center">
-                                <img class="card-img-top thumbnail-product" src="/media/{{ producto.imagen }}" alt="" />
-                            </div>
-                            <div class="card-body">
-                                <div class="card-text">
-                                    <div class="lead text-secondary fw-bold letra-normal-negra">{{ producto.html_estado|safe }}</div>
-                                    <br />
-                                    <div class="letra-titulo-producto">
-                                    {{ producto.nombre }}
-                                    </div>
-                                    <br />
-                                    {{ producto.html_precio|safe }}
-                                    <br />
-                                    <b>Descripción</b>
-                                    <br />
-                                    <div class="text-truncate">{{ producto.descripcion }}</div>
-                                    <br />
-                                    <b>{{ producto.html_stock }}</b>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                {% endfor %}
-            </div>
-        </div>
-    </div>
+<div class="custom-div">
+    <p class="mini-titulo">Arriendo de Bicicletas</p>
 </div>
+<div class="container-fluid">
+  <div class="filtro-lateral">
+      <!-- Filtro de búsqueda -->
+      <p class="mini-titulo">Seleccionar Filtros</p>
+      <form method="GET" action="{% url 'arriendo' %}">
+          <div class="form-group">
+              <label for="categoria">Categoría:</label>
+              <select name="categoria" id="categoria" class="form-control">
+                  <option value="">Todas</option>
+                  {% for categoria in categorias %}
+                      <option value="{{ categoria.id }}" {% if request.GET.categoria == categoria.id|stringformat:"s" %}selected{% endif %}>{{ categoria.nombre }}</option>
+                  {% endfor %}
+              </select>
+          </div>
+          <div class="form-group">
+              <label for="talla">Talla:</label>
+              <select name="talla" id="talla" class="form-control">
+                  <option value="">Todas</option>
+                  {% for talla in tallas %}
+                      <option value="{{ talla.id }}" {% if request.GET.talla == talla.id|stringformat:"s" %}selected{% endif %}>{{ talla.nombre }}</option>
+                  {% endfor %}
+              </select>
+          </div>
+          <button type="submit" class="btn btn-primary">Filtrar</button>
+      </form>
+  </div>
+
+  <div class="productos">
+      <!-- Productos de la tienda -->
+      <div class="album">
+          <div class="container">
+              <div id="product-item" class="row">
+                  {% for producto in productos %}
+                  <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3" id="mini_producto">
+                      <a href="{% url 'ficha' producto.id %}" class="card-link index_ficha">
+                          <div class="card mb-4 box-shadow" style="border: 1px solid #dcdcdc; background-color: #ffffff; padding: 30px; width: 270px; height: 550px; margin: 0 3px;">
+                              <div class="text-center">
+                                  <img class="card-img-top thumbnail-product" src="/media/{{ producto.imagen }}" alt="" />
+                              </div>
+                              <div class="card-body">
+                                  <div class="card-text">
+                                      <div class="lead text-secondary fw-bold letra-normal-negra">{{ producto.html_estado|safe }}</div>
+                                      <br />
+                                      <div class="letra-titulo-producto">
+                                      {{ producto.nombre }}
+                                      </div>
+                                      <br />
+                                      {{ producto.html_precio|safe }}
+                                      <br />
+                                      <b>Descripción</b>
+                                      <br />
+                                      <div class="text-truncate">{{ producto.descripcion }}</div>
+                                      <br />
+                                      <b>{{ producto.html_stock }}</b>
+                                  </div>
+                              </div>
+                          </div>
+                      </a>
+                  </div>
+                  {% endfor %}
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<div style="clear: both;"></div>
 {% endblock content %}
 
 {% block script %}
