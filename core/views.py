@@ -9,7 +9,7 @@ from django.contrib.auth.forms import PasswordChangeForm
 from django.urls import reverse
 from django.utils.safestring import SafeString
 from django.contrib.auth.decorators import login_required, user_passes_test
-from .models import Producto, Boleta, Carrito, DetalleBoleta, Bodega, Perfil
+from .models import Producto, Boleta, Carrito, DetalleBoleta, Bodega, Perfil, Categoria, Talla
 from .forms import ProductoForm, BodegaForm, IngresarForm, UsuarioForm, PerfilForm
 from .forms import RegistroUsuarioForm, RegistroPerfilForm
 from .templatetags.custom_filters import formatear_dinero, formatear_numero
@@ -760,3 +760,24 @@ def poblar(request):
     # de "Adminstración de usuarios".
     poblar_bd('cri.gomezv@profesor.duoc.cl')
     return redirect(index)
+
+def arriendo(request):
+    categorias = Categoria.objects.all()
+    tallas = Talla.objects.all()
+    productos = Producto.objects.all()
+
+    categoria_id = request.GET.get('categoria')
+    talla_id = request.GET.get('talla')
+
+    if categoria_id:
+        productos = productos.filter(categoria_id=categoria_id)
+    if talla_id:
+        productos = productos.filter(talla_id=talla_id)
+
+    context = {
+        'categorias': categorias,
+        'tallas': tallas,
+        'productos': productos
+    }
+
+    return render(request, 'core/arriendo.html', context)
