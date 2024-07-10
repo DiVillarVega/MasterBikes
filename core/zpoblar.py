@@ -208,225 +208,225 @@ def poblar_bd(test_user_email=''):
         {
             'id': 1,
             'categoria': Categoria.objects.get(id=1),
-            'talla': Talla.objects.get(id=1),
-            'nombre': 'Grand Theft Auto V',
-            'descripcion': 'Grand Theft Auto V te sumerge en la soleada ciudad de Los Santos y sus alrededores, donde seguirás las historias entrelazadas de tres criminales muy diferentes mientras planean y ejecutan audaces atracos para sobrevivir en una ciudad despiadada. Disfruta de un mundo abierto enorme y detallado, con una gran variedad de misiones, actividades y desafíos, además de un modo online multijugador en constante evolución.',
-            'precio': 29990,
+            'talla': Talla.objects.get(id=3),
+            'nombre': 'BICICLETA RALEIGH AGILE NARANJA',
+            'descripcion': 'Bicicleta con marco de aluminio, discos mecánicos delantero y trasero, horquilla con suspensión.',
+            'precio': 10000,
             'descuento_subscriptor': 5,
             'descuento_oferta': 15,
-            'imagen': 'productos/000001.jpg'
+            'imagen': 'mtb1.jpg'
         },
         {
             'id': 2,
             'categoria': Categoria.objects.get(id=1),
-            'talla': Talla.objects.get(id=2),
-            'nombre': 'Red Dead Redemption 2',
-            'descripcion': 'Red Dead Redemption 2 es una épica historia sobre la vida en el despiadado corazón de América. El vasto y evocador mundo del juego también proporcionará la base para una nueva experiencia multijugador online.',
-            'precio': 59990,
+            'talla': Talla.objects.get(id=3),
+            'nombre': 'BICICLETA BEST OTIS',
+            'descripcion': 'Bicicleta marco de aluminio, discos mecanicos.',
+            'precio': 10000,
             'descuento_subscriptor': 5,
             'descuento_oferta': 10,
-            'imagen': 'productos/000002.jpg'
+            'imagen': 'mtb2.jpg'
         },
         {
             'id': 3,
             'categoria': Categoria.objects.get(id=1),
             'talla': Talla.objects.get(id=3),
-            'nombre': 'Call of Duty: Modern Warfare II',
-            'descripcion': 'Call of Duty: Modern Warfare II es la secuela de Modern Warfare (2019) y la decimonovena entrega de la serie Call of Duty. La campaña de Modern Warfare II sigue a la Fuerza Operativa 141 mientras persiguen a un terrorista iraní llamado Hassan Zyani, quien adquirió un misil balístico estadounidense.',
-            'precio': 69990,
+            'nombre': 'BICICLETA VISION KRYPTON',
+            'descripcion': 'Marco MTB Aluminio, Frenos Disco Mecánico.',
+            'precio': 9000,
             'descuento_subscriptor': 5,
             'descuento_oferta': 0,
-            'imagen': 'productos/000003.jpg'
+            'imagen': 'mtb3.jpg'
         },
         {
             'id': 4,
             'categoria': Categoria.objects.get(id=1),
             'talla': Talla.objects.get(id=4),
-            'nombre': 'God of War Ragnarök',
-            'descripcion': 'Únete a Kratos y Atreus en un viaje mítico por los Nueve Reinos mientras se preparan para la profetizada batalla que acabará con el mundo. En God of War Ragnarök, explorarás paisajes impresionantes y te enfrentarás a temibles enemigos, tanto dioses como monstruos, mientras buscas respuestas y aliados antes de que llegue el Ragnarök.',
-            'precio': 69990,
+            'nombre': 'BICICLETA BEST CYGNUS',
+            'descripcion': 'Marco de aluminio y frenos de disco mecánicos.',
+            'precio': 10500,
             'descuento_subscriptor': 5,
             'descuento_oferta': 5,
-            'imagen': 'productos/000004.jpg'
+            'imagen': 'mtb4.jpg'
         },
         {
             'id': 5,
             'categoria': Categoria.objects.get(id=1),
-            'talla': Talla.objects.get(id=1),
-            'nombre': 'Doom Eternal',
-            'descripcion': 'Doom Eternal es un shooter en primera persona desarrollado por id Software y publicado por Bethesda Softworks. El juego continúa la historia de Doom (2016), y sigue al Doom Slayer en su lucha contra las fuerzas del infierno que han invadido la Tierra.',
-            'precio': 19990,
+            'talla': Talla.objects.get(id=3),
+            'nombre': 'BICICLETA UPLAND X90-650B BLANCO',
+            'descripcion': 'Doble disco mecánico, cambios Shimano, marco light de aluminio.',
+            'precio': 12000,
             'descuento_subscriptor': 5,
             'descuento_oferta': 20,
-            'imagen': 'productos/000005.jpg'
+            'imagen': 'mtb5.jpg'
         },
         {
             'id': 6,
             'categoria': Categoria.objects.get(id=1),
             'talla': Talla.objects.get(id=2),
-            'nombre': 'Elden Ring',
-            'descripcion': 'Elden Ring es un juego de rol de acción desarrollado por FromSoftware y publicado por Bandai Namco Entertainment. El juego se desarrolla en un mundo abierto llamado las Tierras Intermedias, donde los jugadores controlan a un personaje conocido como el Sinluz, que debe viajar por el mundo para restaurar el Elden Ring, un poderoso artefacto que ha sido destruido.',
-            'precio': 59990,
+            'nombre': 'BICICLETA RALEIGH HONOR NEGRO/VERDE',
+            'descripcion': 'Marco de aluminio, discos hidráulicos, suspensión delantera.',
+            'precio': 14000,
             'descuento_subscriptor': 5,
             'descuento_oferta': 10,
-            'imagen': 'productos/000006.jpg'
+            'imagen': 'mtb6.jpg'
         },
         {
             'id': 7,
             'categoria': Categoria.objects.get(id=1),
             'talla': Talla.objects.get(id=3),
-            'nombre': 'Horizon Forbidden West',
-            'descripcion': 'Horizon Forbidden West es la secuela de Horizon Zero Dawn. El juego sigue a Aloy, una joven cazadora en un mundo postapocalíptico gobernado por máquinas. En Forbidden West, Aloy debe viajar a una nueva y peligrosa frontera para investigar una misteriosa plaga que está matando la vida vegetal y animal.',
-            'precio': 69990,
+            'nombre': 'BICICLETA RANSOM 920 2022',
+            'descripcion': 'La 920 viene equipada con la horquilla FOX 38, nuestro sistema de suspensión TwinLoc.',
+            'precio': 50000,
             'descuento_subscriptor': 5,
             'descuento_oferta': 0,
-            'imagen': 'productos/000007.jpg'
+            'imagen': 'mtb7.jpg'
         },
         {
             'id': 8,
             'categoria': Categoria.objects.get(id=1),
             'talla': Talla.objects.get(id=4),
-            'nombre': 'Spider-Man: Miles Morales',
-            'descripcion': 'Spider-Man: Miles Morales es un juego de acción y aventura desarrollado por Insomniac Games y publicado por Sony Interactive Entertainment. El juego sigue a Miles Morales, un adolescente que adquiere poderes similares a los de Spider-Man después de ser mordido por una araña genéticamente modificada.',
-            'precio': 49990,
+            'nombre': 'BICICLETA BEST STORK SUSPENSION',
+            'descripcion': 'Marco de acero, horquilla con suspensión delantera, cambios Shimano.',
+            'precio': 10000,
             'descuento_subscriptor': 5,
             'descuento_oferta': 15,
-            'imagen': 'productos/000008.jpg'
+            'imagen': 'mtb8.jpg'
         },
         # Categoría "Ruta" (4 juegos)
         {
             'id': 9,
             'categoria': Categoria.objects.get(id=2),
-            'talla': Talla.objects.get(id=1),
-            'nombre': 'The Legend of Zelda: Breath of the Wild',
-            'descripcion': 'The Legend of Zelda: Breath of the Wild es un videojuego de acción-aventura desarrollado y publicado por Nintendo para las consolas Nintendo Switch y Wii U. El juego es la decimonovena entrega de la serie The Legend of Zelda y fue lanzado mundialmente en marzo de 2017. Breath of the Wild es un juego de mundo abierto que permite a los jugadores explorar libremente el reino de Hyrule.',
-            'precio': 59990,
+            'talla': Talla.objects.get(id=3),
+            'nombre': 'BICICLETA RALEIGH VULTURE',
+            'descripcion': 'Marco de aluminio, sin suspensión , cambios Shimano.',
+            'precio': 12000,
             'descuento_subscriptor': 5,
             'descuento_oferta': 0,
-            'imagen': 'productos/000009.jpg'
+            'imagen': 'ruta1.jpg'
         },
         {
             'id': 10,
             'categoria': Categoria.objects.get(id=2),
             'talla': Talla.objects.get(id=2),
-            'nombre': 'Uncharted 4: A Thief\'s End',
-            'descripcion': 'Uncharted 4: A Thief\'s End es un videojuego de acción-aventura desarrollado por Naughty Dog y publicado por Sony Computer Entertainment para PlayStation 4. El juego fue lanzado en mayo de 2016 y es la cuarta entrega principal de la serie Uncharted. La historia sigue a Nathan Drake, un cazador de tesoros retirado que se ve obligado a volver a su antigua vida cuando su hermano Sam reaparece.',
-            'precio': 19990,
+            'nombre': 'BICICLETA MERIDA SCULTURA',
+            'descripcion': 'Bicicleta con marco de aluminio, cambios Shimano.',
+            'precio': 25000,
             'descuento_subscriptor': 5,
             'descuento_oferta': 20,
-            'imagen': 'productos/000010.jpg'
+            'imagen': 'ruta2.jpg'
         },
         {
             'id': 11,
             'categoria': Categoria.objects.get(id=2),
-            'talla': Talla.objects.get(id=3),
-            'nombre': 'Assassin\'s Creed Valhalla',
-            'descripcion': 'Assassin\'s Creed Valhalla es un videojuego de acción-aventura desarrollado por Ubisoft Montreal y publicado por Ubisoft. Es la duodécima entrega principal de la serie Assassin\'s Creed y la sucesora de Assassin\'s Creed Odyssey de 2018. El juego se lanzó en noviembre de 2020 para Microsoft Windows, PlayStation 4, PlayStation 5, Xbox One, Xbox Series X/S y Stadia.',
-            'precio': 59990,
+            'talla': Talla.objects.get(id=1),
+            'nombre': 'BICICLETA RUTA BEST LARK T:S',
+            'descripcion': 'BICICLETA BEST RUTA 700" LARK T:S o 50 geometría baja 2022',
+            'precio': 17000,
             'descuento_subscriptor': 5,
             'descuento_oferta': 10,
-            'imagen': 'productos/000011.jpg'
+            'imagen': 'ruta3.jpg'
         },
         {
             'id': 12,
             'categoria': Categoria.objects.get(id=2),
-            'talla': Talla.objects.get(id=4),
-            'nombre': 'Star Wars Jedi: Fallen Order',
-            'descripcion': 'Star Wars Jedi: Fallen Order es una emocionante aventura de acción en tercera persona ambientada en el universo de Star Wars. Ponte en la piel de Cal Kestis, un padawan que sobrevivió a la Orden 66 y debe completar su entrenamiento, desarrollar nuevas y poderosas habilidades con la Fuerza y dominar el arte del sable láser mientras te mantienes un paso por delante del Imperio y sus mortíferos Inquisidores.',
-            'precio': 39990,
+            'talla': Talla.objects.get(id=3),
+            'nombre': 'BICICLETA BEST GARZA',
+            'descripcion': 'Una buena bicicleta se caracteriza por su resistencia y fabricación con los materiales de la más alta calidad.',
+            'precio': 12000,
             'descuento_subscriptor': 5,
             'descuento_oferta': 15,
-            'imagen': 'productos/000012.jpg'
+            'imagen': 'ruta4.jpg'
         },
         # Categoría "Urbana" (4 juegos)
         {
             'id': 13,
             'categoria': Categoria.objects.get(id=3),
             'talla': Talla.objects.get(id=1),
-            'nombre': 'Civilization VI',
-            'descripcion': 'Civilization VI es un juego de estrategia por turnos en el que los jugadores intentan construir un imperio que resista el paso del tiempo. Explora un nuevo mundo, investiga tecnologías, conquista a tus enemigos y enfréntate a los líderes más famosos de la historia mientras intentas construir la civilización más grande jamás conocida.',
-            'precio': 39990,
+            'nombre': 'BICICLETA MERIDA CROSSWAY',
+            'descripcion': 'Bicicleta confiable para la ciudad, con marco de acero al igual que su horquilla.',
+            'precio': 12000,
             'descuento_subscriptor': 5,
             'descuento_oferta': 5,
-            'imagen': 'productos/000013.jpg'
+            'imagen': 'urb1.jpg'
         },
         {
             'id': 14,
             'categoria': Categoria.objects.get(id=3),
             'talla': Talla.objects.get(id=2),
-            'nombre': 'XCOM 2',
-            'descripcion': 'XCOM 2 es la secuela del galardonado juego de estrategia XCOM: Enemy Unknown. La Tierra ha cambiado y ahora está bajo control alienígena. Como líder de XCOM, una organización militar secreta, debes reconstruir la base de operaciones, reclutar nuevos soldados y liderar la resistencia para liberar a la humanidad del yugo alienígena.',
-            'precio': 19990,
+            'nombre': 'BICICLETA RALEIGH GIAN',
+            'descripcion': 'Diseñada para aventuras inigualables, marco de aluminio y piñon fijo.',
+            'precio': 10000,
             'descuento_subscriptor': 5,
             'descuento_oferta': 15,
-            'imagen': 'productos/000014.jpg'
+            'imagen': 'urb2.jpg'
         },
         {
             'id': 15,
             'categoria': Categoria.objects.get(id=3),
             'talla': Talla.objects.get(id=3),
-            'nombre': 'Total War: Warhammer III',
-            'descripcion': 'Total War: Warhammer III es un juego de estrategia en tiempo real y por turnos ambientado en el mundo de fantasía de Warhammer. El juego presenta cuatro razas jugables: Kislev, Cathay, Khorne y Nurgle, cada una con sus propias unidades, mecánicas y objetivos de campaña. Los jugadores pueden liderar a sus ejércitos en batallas masivas en tiempo real y gestionar sus imperios en un mapa de campaña por turnos.',
-            'precio': 59990,
+            'nombre': 'BICICLETA UPLAND EMILY 700 GRIS',
+            'descripcion': 'Marco de aluminio, cambios Shimano.',
+            'precio': 14000,
             'descuento_subscriptor': 5,
             'descuento_oferta': 0,
-            'imagen': 'productos/000015.jpg'
+            'imagen': 'urb3.jpg'
         },
         {
             'id': 16,
             'categoria': Categoria.objects.get(id=3),
             'talla': Talla.objects.get(id=4),
-            'nombre': 'Age of Empires IV',
-            'descripcion': 'Age of Empires IV es un juego de estrategia en tiempo real desarrollado por Relic Entertainment y publicado por Xbox Game Studios. El juego es la cuarta entrega principal de la serie Age of Empires y fue lanzado en octubre de 2021. El juego presenta ocho civilizaciones jugables, cada una con sus propias unidades, tecnologías y edificios únicos.',
-            'precio': 59990,
+            'nombre': 'Bicicleta Artemisa',
+            'descripcion': 'Marco de acero al igual que su horquilla, con ejes de aluminio.',
+            'precio': 14000,
             'descuento_subscriptor': 5,
             'descuento_oferta': 10,
-            'imagen': 'productos/000016.jpg'
+            'imagen': 'urb4.jpg'
         },
         # Categoría "BMX" (4 juegos)
         {
             'id': 17,
             'categoria': Categoria.objects.get(id=4),
             'talla': Talla.objects.get(id=1),
-            'nombre': 'The Witcher 3: Wild Hunt',
-            'descripcion': 'The Witcher 3: Wild Hunt es un juego de rol de acción de mundo abierto desarrollado y publicado por CD Projekt Red. El juego sigue a Geralt de Rivia, un cazador de monstruos profesional conocido como brujo, mientras busca a su hija adoptiva, Ciri, quien está siendo perseguida por la Cacería Salvaje, una fuerza espectral que busca usar sus poderes para sus propios fines.',
-            'precio': 29990,
+            'nombre': 'BICICLETA BMX HUFFY REVOLT',
+            'descripcion': 'Bicicleta perfecta para iniciar en el mundo de las acrobacias.',
+            'precio': 10000,
             'descuento_subscriptor': 5,
             'descuento_oferta': 10,
-            'imagen': 'productos/000017.jpg'
+            'imagen': 'bmx1.jpg'
         },
         {
             'id': 18,
             'categoria': Categoria.objects.get(id=4),
             'talla': Talla.objects.get(id=2),
-            'nombre': 'Final Fantasy VII Remake',
-            'descripcion': 'Final Fantasy VII Remake es una reimaginación del clásico juego de rol de 1997. El juego sigue a Cloud Strife, un ex-SOLDADO que se une a un grupo eco-terrorista llamado AVALANCHE para luchar contra la megacorporación Shinra, que está drenando la energía vital del planeta.',
-            'precio': 59990,
+            'nombre': 'BICICLETA BMX KINK CURB',
+            'descripcion': 'Diseñada para ciclistas principiantes que buscan una experiencia de calidad profesional',
+            'precio': 15000,
             'descuento_subscriptor': 5,
             'descuento_oferta': 5,
-            'imagen': 'productos/000018.jpg'
+            'imagen': 'bmx2.jpg'
         },
         {
             'id': 19,
             'categoria': Categoria.objects.get(id=4),
             'talla': Talla.objects.get(id=3),
-            'nombre': 'Cyberpunk 2077',
-            'descripcion': 'Cyberpunk 2077 es un juego de rol de acción de mundo abierto desarrollado y publicado por CD Projekt Red. El juego se desarrolla en Night City, una megaciudad futurista obsesionada con el poder, el glamour y la modificación corporal. Los jugadores asumen el papel de V, un mercenario que puede ser personalizado en términos de género, apariencia y trasfondo.',
-            'precio': 39990,
+            'nombre': 'BICICLETA BMX SUNDAY PRIMER',
+            'descripcion': 'Construido alrededor de una geometría de nivel profesional en una amplia gama de tamaños de tubos superiores.',
+            'precio': 17000,
             'descuento_subscriptor': 5,
             'descuento_oferta': 15,
-            'imagen': 'productos/000019.jpg'
+            'imagen': 'bmx3.jpg'
         },
         {
             'id': 20,
             'categoria': Categoria.objects.get(id=4),
-            'talla': Talla.objects.get(id=4),
-            'nombre': 'Diablo IV',
-            'descripcion': 'Diablo IV es un juego de rol de acción de mazmorras desarrollado y publicado por Blizzard Entertainment. Es la cuarta entrega principal de la serie Diablo y fue lanzado en junio de 2023. El juego se desarrolla en un mundo oscuro y gótico llamado Santuario, donde los jugadores luchan contra las fuerzas del infierno.',
-            'precio': 69990,
+            'talla': Talla.objects.get(id=3),
+            'nombre': 'BICICLETA BMX WTP CRYSIS',
+            'descripcion': 'Su construcción excepcional desata la envidia de la competencia, ya que supera a la mayoría de los modelos en el mercado de piezas de recambios.',
+            'precio': 20000,
             'descuento_subscriptor': 5,
             'descuento_oferta': 0,
-            'imagen': 'productos/000020.jpg'
+            'imagen': 'bmx4.jpg'
         }
     ]
 
