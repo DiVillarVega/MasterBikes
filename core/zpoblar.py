@@ -208,24 +208,24 @@ def poblar_bd(test_user_email=''):
         {
             'id': 1,
             'categoria': Categoria.objects.get(id=1),
-            'talla': Talla.objects.get(id=3),
+            'talla': Talla.objects.get(id=1),
             'nombre': 'BICICLETA RALEIGH AGILE NARANJA',
             'descripcion': 'Bicicleta con marco de aluminio, discos mecánicos delantero y trasero, horquilla con suspensión.',
             'precio': 10000,
             'descuento_subscriptor': 5,
             'descuento_oferta': 15,
-            'imagen': 'mtb1.jpg'
+            'imagen': 'productos/mtb1.jpg'
         },
         {
             'id': 2,
             'categoria': Categoria.objects.get(id=1),
-            'talla': Talla.objects.get(id=3),
+            'talla': Talla.objects.get(id=2),
             'nombre': 'BICICLETA BEST OTIS',
             'descripcion': 'Bicicleta marco de aluminio, discos mecanicos.',
             'precio': 10000,
             'descuento_subscriptor': 5,
             'descuento_oferta': 10,
-            'imagen': 'mtb2.jpg'
+            'imagen': 'productos/mtb2.jpg'
         },
         {
             'id': 3,
@@ -236,7 +236,7 @@ def poblar_bd(test_user_email=''):
             'precio': 9000,
             'descuento_subscriptor': 5,
             'descuento_oferta': 0,
-            'imagen': 'mtb3.jpg'
+            'imagen': 'productos/mtb3.jpg'
         },
         {
             'id': 4,
@@ -247,18 +247,18 @@ def poblar_bd(test_user_email=''):
             'precio': 10500,
             'descuento_subscriptor': 5,
             'descuento_oferta': 5,
-            'imagen': 'mtb4.jpg'
+            'imagen': 'productos/mtb4.jpg'
         },
         {
             'id': 5,
             'categoria': Categoria.objects.get(id=1),
-            'talla': Talla.objects.get(id=3),
+            'talla': Talla.objects.get(id=1),
             'nombre': 'BICICLETA UPLAND X90-650B BLANCO',
             'descripcion': 'Doble disco mecánico, cambios Shimano, marco light de aluminio.',
             'precio': 12000,
             'descuento_subscriptor': 5,
             'descuento_oferta': 20,
-            'imagen': 'mtb5.jpg'
+            'imagen': 'productos/mtb5.jpg'
         },
         {
             'id': 6,
@@ -269,7 +269,7 @@ def poblar_bd(test_user_email=''):
             'precio': 14000,
             'descuento_subscriptor': 5,
             'descuento_oferta': 10,
-            'imagen': 'mtb6.jpg'
+            'imagen': 'productos/mtb6.jpg'
         },
         {
             'id': 7,
@@ -280,7 +280,7 @@ def poblar_bd(test_user_email=''):
             'precio': 50000,
             'descuento_subscriptor': 5,
             'descuento_oferta': 0,
-            'imagen': 'mtb7.jpg'
+            'imagen': 'productos/mtb7.jpg'
         },
         {
             'id': 8,
@@ -291,19 +291,19 @@ def poblar_bd(test_user_email=''):
             'precio': 10000,
             'descuento_subscriptor': 5,
             'descuento_oferta': 15,
-            'imagen': 'mtb8.jpg'
+            'imagen': 'productos/mtb8.jpg'
         },
         # Categoría "Ruta" (4 juegos)
         {
             'id': 9,
             'categoria': Categoria.objects.get(id=2),
-            'talla': Talla.objects.get(id=3),
+            'talla': Talla.objects.get(id=1),
             'nombre': 'BICICLETA RALEIGH VULTURE',
             'descripcion': 'Marco de aluminio, sin suspensión , cambios Shimano.',
             'precio': 12000,
             'descuento_subscriptor': 5,
             'descuento_oferta': 0,
-            'imagen': 'ruta1.jpg'
+            'imagen': 'productos/ruta1.jpg'
         },
         {
             'id': 10,
@@ -314,29 +314,29 @@ def poblar_bd(test_user_email=''):
             'precio': 25000,
             'descuento_subscriptor': 5,
             'descuento_oferta': 20,
-            'imagen': 'ruta2.jpg'
+            'imagen': 'productos/ruta2.jpg'
         },
         {
             'id': 11,
             'categoria': Categoria.objects.get(id=2),
-            'talla': Talla.objects.get(id=1),
+            'talla': Talla.objects.get(id=3),
             'nombre': 'BICICLETA RUTA BEST LARK T:S',
             'descripcion': 'BICICLETA BEST RUTA 700" LARK T:S o 50 geometría baja 2022',
             'precio': 17000,
             'descuento_subscriptor': 5,
             'descuento_oferta': 10,
-            'imagen': 'ruta3.jpg'
+            'imagen': 'productos/ruta3.jpg'
         },
         {
             'id': 12,
             'categoria': Categoria.objects.get(id=2),
-            'talla': Talla.objects.get(id=3),
+            'talla': Talla.objects.get(id=4),
             'nombre': 'BICICLETA BEST GARZA',
             'descripcion': 'Una buena bicicleta se caracteriza por su resistencia y fabricación con los materiales de la más alta calidad.',
             'precio': 12000,
             'descuento_subscriptor': 5,
             'descuento_oferta': 15,
-            'imagen': 'ruta4.jpg'
+            'imagen': 'productos/ruta4.jpg'
         },
         # Categoría "Urbana" (4 juegos)
         {
@@ -348,7 +348,7 @@ def poblar_bd(test_user_email=''):
             'precio': 12000,
             'descuento_subscriptor': 5,
             'descuento_oferta': 5,
-            'imagen': 'urb1.jpg'
+            'imagen': 'productos/urb1.jpg'
         },
         {
             'id': 14,
@@ -359,7 +359,7 @@ def poblar_bd(test_user_email=''):
             'precio': 10000,
             'descuento_subscriptor': 5,
             'descuento_oferta': 15,
-            'imagen': 'urb2.jpg'
+            'imagen': 'productos/urb2.jpg'
         },
         {
             'id': 15,
@@ -370,7 +370,7 @@ def poblar_bd(test_user_email=''):
             'precio': 14000,
             'descuento_subscriptor': 5,
             'descuento_oferta': 0,
-            'imagen': 'urb3.jpg'
+            'imagen': 'productos/urb3.jpg'
         },
         {
             'id': 16,
@@ -381,7 +381,7 @@ def poblar_bd(test_user_email=''):
             'precio': 14000,
             'descuento_subscriptor': 5,
             'descuento_oferta': 10,
-            'imagen': 'urb4.jpg'
+            'imagen': 'productos/urb4.jpg'
         },
         # Categoría "BMX" (4 juegos)
         {
@@ -393,7 +393,7 @@ def poblar_bd(test_user_email=''):
             'precio': 10000,
             'descuento_subscriptor': 5,
             'descuento_oferta': 10,
-            'imagen': 'bmx1.jpg'
+            'imagen': 'productos/bmx1.jpg'
         },
         {
             'id': 18,
@@ -404,7 +404,7 @@ def poblar_bd(test_user_email=''):
             'precio': 15000,
             'descuento_subscriptor': 5,
             'descuento_oferta': 5,
-            'imagen': 'bmx2.jpg'
+            'imagen': 'productos/bmx2.jpg'
         },
         {
             'id': 19,
@@ -415,18 +415,18 @@ def poblar_bd(test_user_email=''):
             'precio': 17000,
             'descuento_subscriptor': 5,
             'descuento_oferta': 15,
-            'imagen': 'bmx3.jpg'
+            'imagen': 'productos/bmx3.jpg'
         },
         {
             'id': 20,
             'categoria': Categoria.objects.get(id=4),
-            'talla': Talla.objects.get(id=3),
+            'talla': Talla.objects.get(id=4),
             'nombre': 'BICICLETA BMX WTP CRYSIS',
             'descripcion': 'Su construcción excepcional desata la envidia de la competencia, ya que supera a la mayoría de los modelos en el mercado de piezas de recambios.',
             'precio': 20000,
             'descuento_subscriptor': 5,
             'descuento_oferta': 0,
-            'imagen': 'bmx4.jpg'
+            'imagen': 'productos/bmx4.jpg'
         }
     ]
 
