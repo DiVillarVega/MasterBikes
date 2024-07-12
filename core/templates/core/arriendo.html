@@ -30,16 +30,30 @@
         background-color: #8bc24a;
         border-color: #8bc24a;
         color: black;
+        font-weight: bold;
+        width: 100px; 
+        border-radius: 10px;
     }
 
     .btn-primary:hover {
         background-color: #72ad2e ;
         border-color: #72ad2e ;
+        color: black;
+        font-weight: bold;
     }
 </style>
 {% endblock style %}
 
 {% block content %}
+<div class="categories">
+    <a href="{% url 'index' %}" class="category">INICIO</a>
+    <a href="#" class="category">ACCESORIOS</a>
+    <a href="#" class="category">BICICLETAS</a>
+    <a href="#" class="category">REPUESTOS</a>
+    <a href="{% url 'arriendo' %}" class="category_active">ARRIENDO</a>
+    <a href="#" class="category">REPARACIÓN</a>
+</div>
+
 <!-- Contenido principal -->
 <div class="custom-div">
     <p class="mini-titulo">Arriendo de Bicicletas</p>
@@ -67,7 +81,9 @@
                   {% endfor %}
               </select>
           </div>
+          <div class="text-center">
           <button type="submit" class="btn btn-primary">Filtrar</button>
+         </div>
       </form>
   </div>
 
@@ -76,6 +92,7 @@
       <div class="album">
           <div class="container">
               <div id="product-item" class="row">
+                {% if productos %}
                   {% for producto in productos %}
                   <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3" id="mini_producto">
                       <a href="{% url 'ficha' producto.id %}" class="card-link index_ficha">
@@ -102,8 +119,13 @@
                               </div>
                           </div>
                       </a>
-                  </div>
+                  </div>  
                   {% endfor %}
+                {% else %}
+                    <div class="text-center">
+                        <h2>No hay productos disponibles</h2>
+                    </div>
+                {% endif %}  
               </div>
           </div>
       </div>

@@ -11,8 +11,8 @@ $(document).ready(function() {
 
   }, 'El formato del correo no es válido');
 
-  $('#id_username').attr('placeholder', 'Correo electrónico');
-  $('#id_password').attr('placeholder', 'Contraseña');
+  // $('#id_username').attr('placeholder', 'Correo electrónico');
+  // $('#id_password').attr('placeholder', 'Contraseña');
 
    // Validar formulario de login
    $('#formulario_login').validate(

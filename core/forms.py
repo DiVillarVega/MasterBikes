@@ -2,7 +2,7 @@ from django import forms
 from django.forms import ModelForm, Form, Textarea, FileInput
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
-from .models import Categoria, Producto, Bodega,Perfil
+from .models import Categoria, Producto, Bodega,Perfil, Reserva
 
 # *********************************************************************************************************#
 #                                                                                                          #
@@ -51,7 +51,15 @@ class BodegaForm(Form):
 
 
 
-
+class ReservaForm(Form):
+    class Meta:
+        model = Reserva
+        fields = ['fecha_inicio', 'fecha_termino', 'cantidad']
+        widgets = {
+            'fecha_inicio': forms.DateInput(attrs={'type': 'date'}),
+            'fecha_termino': forms.DateInput(attrs={'type': 'date'}),
+            'cantidad': forms.NumberInput(attrs={'min': '1', 'value': '1'})
+        }
 
 
 

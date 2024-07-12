@@ -9,8 +9,8 @@ from django.contrib.auth.forms import PasswordChangeForm
 from django.urls import reverse
 from django.utils.safestring import SafeString
 from django.contrib.auth.decorators import login_required, user_passes_test
-from .models import Producto, Boleta, Carrito, DetalleBoleta, Bodega, Perfil, Categoria, Talla
-from .forms import ProductoForm, BodegaForm, IngresarForm, UsuarioForm, PerfilForm
+from .models import Producto, Boleta, Carrito, DetalleBoleta, Bodega, Perfil, Categoria, Talla, Reserva
+from .forms import ProductoForm, BodegaForm, IngresarForm, UsuarioForm, PerfilForm, ReservaForm
 from .forms import RegistroUsuarioForm, RegistroPerfilForm
 from .templatetags.custom_filters import formatear_dinero, formatear_numero
 from .tools import eliminar_registro, verificar_eliminar_registro, show_form_errors
@@ -106,6 +106,18 @@ def arriendo(request):
 
 def ficha(request, producto_id):
     context = obtener_info_producto(producto_id)
+
+    if request.method == 'POST':
+        form = ReservaForm(request.POST)
+        if form.is_valid():
+            reserva = form.save(commit=False)
+            reserva.producto_id = producto_id  # Asumiendo que tienes un campo `producto` en tu modelo Reserva
+            reserva.save()
+            return redirect('core/ficha.html')  # Redirige a alguna vista después de guardar la reserva
+    else:
+        form = ReservaForm()
+
+    context['form'] = form
     return render(request, 'core/ficha.html', context)
 
 
@@ -510,20 +522,6 @@ def obtener_info_producto(producto_id):
     # Obtener el producto con el id indicado en "producto_id"
     producto = Producto.objects.get(id=producto_id)
 
-    # Se verificará cuántos productos hay en la bodega que tengan el id indicado en "producto_id".
-    # Para lograrlo se filtrarán en primer lugar los productos con el id indicado. Luego, se
-    # realizará un JOIN con la tabla de "DetalleBoleta" que es donde se indican los productos
-    # que se han vendido desde la bodega, sin olvidar que los modelos funcionan con Orientación
-    # a Objetos, lo que hace que las consultas sean un poco diferentes a las de SQL.
-    # DetalleBoleta está relacionada con la tabla Bodega por medio de su propiedad "bodega",
-    # la cual internamente agrega en la tabla DetalleBoleta el campo "bodega_id", que permite
-    # que se relacione con la tabla Bodega. Para calcular cuántos productos quedan en la Bodega
-    # se debe excluir aquellos que ya fueron vendidos, lo que se logra con la condición
-    # "detalleboleta__isnull=False", es decir, se seleccionarán aquellos registros de Bodega
-    # cuya relación con la tabla de DetalleBoleta esté en NULL, osea los que no han sido vendidos.
-    # Si un producto de la Bodega estuviera vendido, entonces tendría su relación "detalleboleta"
-    # con un valor diferente de NULL, ya que el campo "bodega_id" de la tabla DetalleBoleta
-    # tendría el valor del id de Bodega del producto que se vendió. 
     stock = Bodega.objects.filter(producto_id=producto_id).exclude(
         detalleboleta__isnull=False).count()
 
@@ -639,6 +637,17 @@ def agregar_producto_al_carrito(request, producto_id):
     precio_a_pagar = precio_subscr if perfil.subscrito else precio_oferta
     descuentos = precio - precio_subscr if perfil.subscrito else precio - precio_oferta
 
+    producto = Producto.objects.get(id=producto_id)
+    fecha_inicio = request.POST.get('fecha_inicio')
+    fecha_fin = request.POST.get('fecha_fin')
+    cantidad = int(request.POST.get('cantidad'))
+
+
+    if not producto.disponible_para_fecha(fecha_inicio, fecha_fin, cantidad):
+        messages.error(request, "No hay suficiente stock disponible para las fechas seleccionadas.")
+        return redirect('core/ingresar.html')  # Cambiar a la URL de la página de error
+
+
     Carrito.objects.create(
         cliente=perfil,
         producto=producto,
@@ -651,6 +660,31 @@ def agregar_producto_al_carrito(request, producto_id):
     )
 
     return redirect(ficha, producto_id)
+
+
+# def agregar_producto_al_carrito(request, producto_id):
+#     if not request.user.is_authenticated:
+#         return redirect('login')
+
+#     producto = Producto.objects.get(id=producto_id)
+#     fecha_inicio = request.POST.get('fecha_inicio')
+#     fecha_fin = request.POST.get('fecha_fin')
+#     cantidad = int(request.POST.get('cantidad'))
+
+#     if not producto.disponible_para_fecha(fecha_inicio, fecha_fin, cantidad):
+#         messages.error(request, "No hay suficiente stock disponible para las fechas seleccionadas.")
+#         return redirect('pagina_de_error')  # Cambiar a la URL de la página de error
+
+#     # Aquí puedes agregar la lógica para agregar la bicicleta al carrito y redirigir a la página de pago
+#     # Suponiendo que ya tienes una vista llamada 'pagina_de_pago'
+#     return redirect('pagina_de_pago')
+
+
+
+
+
+
+
 
 
 @user_passes_test(es_cliente_autenticado_y_activo)
@@ -781,3 +815,4 @@ def arriendo(request):
     }
 
     return render(request, 'core/arriendo.html', context)
+

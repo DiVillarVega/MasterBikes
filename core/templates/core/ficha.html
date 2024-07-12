@@ -2,52 +2,130 @@
 {% load static %}
 {% load custom_filters %}
 
+{% block style %}
+<style>
+    /* Estilos generales */
+    .container-fluid {
+        width: 90%;
+        margin: auto;
+        padding: 20px;
+    }
+
+    .row {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .col-md-7, .col-md-4 {
+        flex: 1;
+        padding: 10px;
+    }
+
+    .letra-titulo-producto2 {
+        font-size: 2em;
+        font-weight: bold;
+    }
+
+    .thumbnail-product2 {
+        max-width: 100%;
+        height: auto;
+        margin: 20px 0;
+    }
+
+    .letra-titulo-producto3jajalol {
+        font-size: 1.5em;
+        font-weight: bold;
+        margin-top: 20px;
+    }
+
+    .cuadro_precio_ficha {
+        border: 1px solid #ddd;
+        padding: 20px;
+        text-align: center;
+        background-color: #f9f9f9;
+    }
+
+    .boton_registro2 {
+        display: inline-block;
+        background-color: #5cb85c;
+        color: white;
+        padding: 10px 20px;
+        text-align: center;
+        border-radius: 5px;
+        text-decoration: none;
+    }
+
+    .boton_registro2 img {
+        vertical-align: middle;
+        margin-left: 10px;
+    }
+
+    .datepicker {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+</style>
+{% endblock style %}
+
 {% block content %}
-    {% comment %} <h1 class="">FICHA DE PRODUCTO</h1> {% endcomment %}
-    <!--FICHA DISPONIBLE-->
+<div class="categories">
+    <a href="{% url 'index' %}" class="category">INICIO</a>
+    <a href="#" class="category">ACCESORIOS</a>
+    <a href="#" class="category">BICICLETAS</a>
+    <a href="#" class="category">REPUESTOS</a>
+    <a href="{% url 'arriendo' %}" class="category_active">ARRIENDO</a>
+    <a href="#" class="category">REPARACIÓN</a>
+</div>
 
-    <form method="post" id="formulario-ficha" class="cuadro_ficha">        
-        {% csrf_token %}
-        <div class="container-fluid">
-            <div class="row">
+<form method="post" id="formulario-ficha" class="cuadro_ficha">        
+    {% csrf_token %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-7">
+                <div class="letra-titulo-producto2 ">
+                    {{ nombre }}
+                </div> <br>
 
-                <div class="col-md-7">
-                    <div class="letra-titulo-producto2 ">
-                        {{ nombre }}
-                    </div> <br>
+                <img class="card-img-top thumbnail-product2" src="/media/{{ imagen }}" alt="{{ nombre }}" /> <br>
 
-                    <img
-                    class="card-img-top thumbnail-product2"
-                    src="/media/{{ imagen }}"
-                    alt="" /> <br>
-
-                    <div class="letra-titulo-producto3jajalol">
+                <div class="letra-titulo-producto3jajalol">
                     Descripción
-                    </div>{{ descripcion }}  <br>
+                </div>
+                <div>{{ descripcion }}</div>
+            </div>
+
+            <div class="col-md-4 cuadro_precio_ficha">
+                {{ html_precio|safe }}  <br><br>
+                {{ html_stock|safe }}  <br><br>
+
+                <div>
+                    {{ form.fecha_inicio.label_tag }}<br>
+                    {{ form.fecha_inicio }}<br><br>
+
+                    {{ form.fecha_termino.label_tag }}<br>
+                    {{ form.fecha_termino }}<br><br>
+
+                    {{ form.cantidad.label_tag }}<br>
+                    {{ form.cantidad }}<br><br>
+
+                    <input type="hidden" id="accion">
+                    <button type="submit" class="boton_registro2">
+                        Agregar al carrito 
+                        <img src="{% static 'core/img/carrito-boton.png' %}" alt="" width="24" height="24">    
+                    </button>
                 </div>
 
-                <div class="col-md-4 cuadro_precio_ficha">
-
-                    {{ html_precio|safe }}  <br><br>
-                
-                    {{ html_stock|safe }}  <br><br>
-
-                    <div>
-                        <input type="hidden" id="accion">
-                        <a href="{% url 'agregar_producto_al_carrito' id %}" class="boton_registro2"> 
-                            Agregar al carrito 
-                            <img src="{% static 'core/img/carrito-boton.png' %}" alt="" width="24" height="24">    
-                        </a>
-
-                    </div>
-
-                    {{ html_estado|safe }}  <br>
-                </div>    
-
-            </div>
-        </div>    
-        <br>
-
-    </form>
-
+                {{ html_estado|safe }}  <br>
+            </div>    
+        </div>
+    </div>    
+    <br>
+</form>
 {% endblock content %}
+
+{% block script %}
+    <script src="{% static 'core/js/script.js' %}"></script>
+    <script src="{% static 'core/js/ficha.js' %}"></script>   
+{% endblock script %}

@@ -3,6 +3,15 @@
 {% load custom_filters %}
 
 {% block content %}
+  <div class="categories">
+    <a href="{% url 'index' %}" class="category_active">INICIO</a>
+    <a href="#" class="category">ACCESORIOS</a>
+    <a href="#" class="category">BICICLETAS</a>
+    <a href="#" class="category">REPUESTOS</a>
+    <a href="{% url 'arriendo' %}" class="category">ARRIENDO</a>
+    <a href="#" class="category">REPARACIÓN</a>
+  </div>
+
 
     <br />
     <br />

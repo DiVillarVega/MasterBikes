@@ -184,6 +184,7 @@ def poblar_bd(test_user_email=''):
         { 'id': 2, 'nombre': 'Ruta'},
         { 'id': 3, 'nombre': 'Urbana'},
         { 'id': 4, 'nombre': 'BMX'},
+        { 'id': 5, 'nombre': 'Infantil'},
     ]
 
     tallas_data = [

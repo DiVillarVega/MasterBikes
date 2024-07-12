@@ -69,6 +69,25 @@ class Producto(models.Model):
             'accion_eliminar': 'eliminar el Producto',
             'accion_actualizar': 'actualizar el Producto'
         }
+    
+    def disponible_para_fecha(self, fecha_inicio, fecha_fin, cantidad):
+            reservas = Reserva.objects.filter(
+                producto=self,
+                fecha_fin__gte=fecha_inicio,
+                fecha_inicio__lte=fecha_fin
+            )
+            total_reservado = sum(reserva.cantidad for reserva in reservas)
+            return self.stock - total_reservado >= cantidad
+    
+class Reserva(models.Model):
+    producto = models.ForeignKey(Producto, on_delete=models.CASCADE)
+    fecha_inicio = models.DateField()
+    fecha_fin = models.DateField()
+    cantidad = models.PositiveIntegerField()    
+
+
+    def __str__(self):
+        return f'Reserva de {self.producto.nombre} desde {self.fecha_inicio} hasta {self.fecha_termino}'
 
 class Perfil(models.Model):
     USUARIO_CHOICES = [

@@ -3,11 +3,23 @@
 {% load custom_filters %}
 
 {% block content %}
+<div class="categories">
+    <a href="{% url 'index' %}" class="category">INICIO</a>
+    <a href="#" class="category">ACCESORIOS</a>
+    <a href="#" class="category">BICICLETAS</a>
+    <a href="#" class="category">REPUESTOS</a>
+    <a href="{% url 'arriendo' %}" class="category">ARRIENDO</a>
+    <a href="#" class="category">REPARACIÓN</a>
+</div>
+
+<div class="custom-div">
+    <p class="mini-titulo">Registro</p>
+  </div>
     <!-- contenido principal -->
     <main role="main">
         <div class="container">
             <section class="text center">
-                <h1 class="cute-font-regular neon">REGISTRO</h1>
+
                 <br>
 
                 <!-- Formulario de registro de cliente -->
