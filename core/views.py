@@ -176,28 +176,31 @@ def salir(request):
 
 @user_passes_test(es_usuario_anonimo)
 def registro(request):
-
-    if request.method == 'POST':
-        form_usuario = RegistroUsuarioForm(request.POST)
-        form_perfil = RegistroPerfilForm(request.POST, request.FILES)
-        if form_usuario.is_valid() and form_perfil.is_valid():
-            usuario = form_usuario.save()
-            perfil = form_perfil.save(commit=False)
-            perfil.usuario = usuario
-            perfil.tipo_usuario = 'Cliente'
+    if request.method == "POST":
+        usuario_form = RegistroUsuarioForm(request.POST)
+        perfil_form = RegistroPerfilForm(request.POST, request.FILES)
+        
+        if usuario_form.is_valid() and perfil_form.is_valid():
+            user = usuario_form.save()
+            perfil = perfil_form.save(commit=False)
+            perfil.user = user
             perfil.save()
-            messages.success(request, f'¡Bienvenido(a) {usuario.first_name} {usuario.last_name}! tu registro se ha completado')
-            return redirect('ingresar')  # Redirige a la página principal después del registro
+            messages.success(request, '¡Registro exitoso! Ahora puedes ingresar al sistema.')
+            return redirect('ingresar')
+        else:
+            messages.error(request, 'No se pudo completar el registro')
+            # show_form_errors no es un método predeterminado de Django, asegúrate de tenerlo implementado si quieres mostrar errores
+            show_form_errors(request, [usuario_form, perfil_form])
     else:
-        form_usuario = RegistroUsuarioForm()
-        form_perfil = RegistroPerfilForm()
-    
+        usuario_form = RegistroUsuarioForm()
+        perfil_form = RegistroPerfilForm()
+
     context = {
-        'form_usuario': form_usuario,
-        'form_perfil': form_perfil,
+        'usuario_form': usuario_form,
+        'perfil_form': perfil_form,
     }
 
-    return render(request, 'core/registro.html', context)
+    return render(request, "core/registro.html", context)
 
 
 @login_required

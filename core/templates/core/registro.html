@@ -3,69 +3,111 @@
 {% load custom_filters %}
 
 {% block content %}
-<div class="categories">
-    <a href="{% url 'index' %}" class="category">INICIO</a>
-    <a href="#" class="category">ACCESORIOS</a>
-    <a href="#" class="category">BICICLETAS</a>
-    <a href="#" class="category">REPUESTOS</a>
-    <a href="{% url 'arriendo' %}" class="category">ARRIENDO</a>
-    <a href="#" class="category">REPARACIÓN</a>
-</div>
-
-<div class="custom-div">
-    <p class="mini-titulo">Registro</p>
-  </div>
     <!-- contenido principal -->
+    <div class="categories">
+        <a href="{% url 'index' %}" class="category">INICIO</a>
+        <a href="#" class="category">ACCESORIOS</a>
+        <a href="#" class="category">BICICLETAS</a>
+        <a href="#" class="category">REPUESTOS</a>
+        <a href="{% url 'arriendo' %}" class="category">ARRIENDO</a>
+        <a href="#" class="category">REPARACIÓN</a>
+    </div>
+ 
+
     <main role="main">
         <div class="container">
             <section class="text center">
-
+                <h1 class="cute-font-regular neon">REGISTRO</h1>
                 <br>
 
-                <!-- Formulario de registro de cliente -->
-                <form method="POST" id="formulario_registro" enctype="multipart/form-data" class="white-text">
-                    {% csrf_token %}
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-sm-12 col-md-4">
-                                {{ form_usuario|as_bootstrap_form:'help_text_visible=False' }}
-                            </div>
-
-                            <div class="col-sm-12 col-md-5">
-                                {{ form_perfil|as_bootstrap_form }}
-                            </div>
-                            
-                            <!-- foto de perfil -->
-                            <div class="col-sm-12 col-md-3">
-                                <br>
-                                <div class="row">
-                                    <div class="col-sm-12" style="height: 220px">
-                                        <img src="{% static 'core/img/perfil.webp'%}" alt="" class="user-image" id="cuadro-imagen">
-                                        <br>
-                                        <button class="btn btn-primary boton_registro" onclick="event.preventDefault(); document.getElementById('id_imagen').click();">Seleccionar imagen</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- fin foto perfil -->
-
+            <!-- Formulario de registro de cliente -->
+            <form method="POST" id="formulario_registro" enctype="multipart/form-data" class="cuadro_login3" >
+                <div class="letra_grande">
+                    Únete a MasterBikes
+                </div>
+                <br><br>
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            {{ usuario_form.username }}
+                            <label for="username" class="label">Cuenta</label>
                         </div>
-
-
-                        <div class="row">
-                            <div class="col text-center">
-                                <button type="submit" class="btn btn-primary boton_registro">Registrarse</button>
-                                <button type="reset" id="limpiar_formulario_registro" class="btn btn-primary boton_registro">Limpiar</button>
-                            </div>
+                        <div class="input-group">
+                            {{ perfil_form.rut }}
+                            <label for="rut" class="label">RUT</label>
                         </div>
+                        <div class="input-group">
+                            {{ usuario_form.first_name }}
+                            <label for="first_name" class="label">Nombre</label>
+                        </div>
+                        <div class="input-group">
+                            {{ usuario_form.last_name }}
+                            <label for="last_name" class="label">Apellido</label>
+                        </div>
+                        
+                        <div class="input-group">
+                            {{ usuario_form.email }}
+                            <label for="email" class="label">Correo</label>
+                        </div>
+                        
+                        
                     </div>
 
-                </form>
-            </section>
-        </div>
-    </main>
+                    <div class="col-md-4">
+                        
+                        <div class="input-group">
+                            {{ perfil_form.direccion }}
+                            <label for="direccion" class="label">Dirección</label>
+                        </div>
+                        <div class="form-group">
+                            {{ perfil_form.subscrito.label_tag }}
+                            {{ perfil_form.subscrito }}
+                        </div>
+                        <div class="input-group">
+                            {{ usuario_form.password1 }}
+                            <label for="password1" class="label">Contraseña</label>
+                        </div>
+                        <div class="input-group">
+                            {{ usuario_form.password2 }}
+                            <label for="password2" class="label">Confirmar contraseña</label>
+                        </div>
+                        
+                        
+                    </div>
+                    
+                    <div class="col-md-4">
+                        
+                        <img src="{% static 'core/img/mdemaster.png' %}" style="height: 100px;" alt="">
+                        <div class="text-center">
+                            Al registrarte aceptas nuestras <a href="{% url 'registro' %}" class="letra-azuul-bold align-items-center">Condiciones</a>, nuestra
+                            <a href="{% url 'registro' %}" class="letra-azuul-bold align-items-center">Política de Privacidad</a> y la 
+                            <a href="{% url 'registro' %}" class="letra-azuul-bold align-items-center">Politica de Cookies</a>.
+                        </div>
+                        <br><br>
+                        <div class="col text-center">
+                            <button type="submit" class="boton_registro">Registrarse</button>
+                        </div>
+                        <br>
+                        <div class="text-center">
+                            ¿Tienes una cuenta? <a href="{% url 'ingresar' %}" class="letra-azuul-bold align-items-center">Inicia sesión</a>
+                        </div>  
+                    </div>
+                    <div class="text-center">
+                        ¿Eres empresa y necesitas nuestros servicios? Escribe directamente a nuestro <a href="{% url 'registro' %}" class="letra-azuul-bold align-items-center">Correo</a>
+                    </div>  
+                    
+                </div>
+
+                
+            </form>
+            <br>
+        </section>
+    
+</main>
 {% endblock content %}
 
 {% block script %}
-    <script src="{% static 'core/js/validacion_registro.js'%}"></script>
-    <script src="{% static 'core/js/script.js'%}"></script>
+<script src="{% static 'core/js/validacion_registro.js' %}"></script>
+<script src="{% static 'core/js/script.js' %}"></script>
 {% endblock script %}
