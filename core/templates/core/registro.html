@@ -13,11 +13,14 @@
         <a href="#" class="category">REPARACIÓN</a>
     </div>
  
+    <div class="custom-div">
+        <p class="mini-titulo">Registro</p>
+      </div>
 
     <main role="main">
         <div class="container">
             <section class="text center">
-                <h1 class="cute-font-regular neon">REGISTRO</h1>
+
                 <br>
 
             <!-- Formulario de registro de cliente -->
@@ -77,8 +80,10 @@
                     </div>
                     
                     <div class="col-md-4">
-                        
-                        <img src="{% static 'core/img/mdemaster.png' %}" style="height: 100px;" alt="">
+                        <div class="text-center">
+                            <img src="{% static 'core/img/mdemaster.png' %}" style="height: 100px;" alt="">
+                        </div>
+                       
                         <div class="text-center">
                             Al registrarte aceptas nuestras <a href="{% url 'registro' %}" class="letra-azuul-bold align-items-center">Condiciones</a>, nuestra
                             <a href="{% url 'registro' %}" class="letra-azuul-bold align-items-center">Política de Privacidad</a> y la 
