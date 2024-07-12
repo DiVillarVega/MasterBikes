@@ -90,6 +90,24 @@ html body {
   align-items: center; /* Centra verticalmente */
 }
 
+.cuadro_login3 {
+  border: 5px solid rgb(#bcbcbc);
+  padding: 60px;
+  width: 1600px;
+  height: auto;
+  background-color: white;
+  margin: 0 auto;
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center; /* Centra verticalmente */
+}
+
+.letra_grande {
+  font-size: 25px;
+  color:#000;
+  font-weight: bold;
+  text-align: left;
+}
+
 .cuadro_precio_ficha {
   border: 2px solid rgb(#dcdcdc);
   padding: 30px;
@@ -898,4 +916,59 @@ footer a {
   overflow-y: auto; /* Agrega scroll si es necesario */
   padding: 20px; /* Borde derecho opcional */
 }
+
+
+/* CSS personalizado */
+.user-image {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.boton_registro {
+  background-color: #7bbf00; /* color verde */
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.boton_registro:hover {
+  background-color: white;
+  color: #7bbf00;
+  border: 2px solid #7bbf00;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  font-weight: bold;
+  color: #333;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.text-center {
+  text-align: center;
+}
+
 
