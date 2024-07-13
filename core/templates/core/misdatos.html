@@ -3,15 +3,26 @@
 {% load custom_filters %}
 
 {% block content %}
-    <!-- contenido principal -->
+<div class="categories">
+    <a href="{% url 'index' %}" class="category">INICIO</a>
+    <a href="#" class="category">ACCESORIOS</a>
+    <a href="#" class="category">BICICLETAS</a>
+    <a href="#" class="category">REPUESTOS</a>
+    <a href="{% url 'arriendo' %}" class="category">ARRIENDO</a>
+    <a href="#" class="category">REPARACIÓN</a>
+  </div>
+
+  <div class="custom-div">
+    <p class="mini-titulo">Mis datos</p>
+ </div> 
+    <!-- contenido principal -->    
     <main role="main">
         <div class="container">
             <section class="text center">
-                <h1 class="cute-font-regular neon">MIS DATOS</h1>
                 <br>
 
                 <!-- Formulario de registro de cliente -->
-                <form method="POST" id="formulario_misdatos" enctype="multipart/form-data" class="white-text">
+                <form method="POST" id="formulario_misdatos" enctype="multipart/form-data">
                     {% csrf_token %}
                     <div class="container-fluid">
                         <div class="row">
@@ -30,7 +41,7 @@
                                     <div class="col-sm-12" style="height: 220px">
                                         <img src="{{ perfil.imagen.url }}" alt="" class="user-image" id="cuadro-imagen">
                                         <br>
-                                        <button class="btn btn-primary boton_registro" onclick="event.preventDefault(); document.getElementById('id_imagen').click();">Seleccionar imagen</button>
+                                        <button class="boton_registro" onclick="event.preventDefault(); document.getElementById('id_imagen').click();">Seleccionar imagen</button>
                                     </div>
                                 </div>
                             </div>
@@ -38,14 +49,14 @@
 
                         </div>
 
-
+                        <br><br>
                         <div class="row">
                             <div class="col text-center">
-                                <button type="update" class="btn btn-primary boton_registro">Actualizar</button>
+                                <button type="update" class="boton_registro">Actualizar</button>
                             </div>
                         </div>
                     </div>
-
+                    <br><br><br><br>
                 </form>
             </section>
         </div>

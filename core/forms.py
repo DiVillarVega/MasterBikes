@@ -158,7 +158,8 @@ class RegistroPerfilForm(forms.ModelForm):
         widget=forms.Textarea(attrs={
             'class': 'input',
             'required': True,
-            'name': 'direccion'
+            'name': 'direccion',
+            'id': 'id_direccion'
         }),
         label="Dirección"
     )
@@ -218,6 +219,6 @@ class PerfilForm(ModelForm):
         model = Perfil
         fields = ['tipo_usuario', 'rut', 'direccion', 'subscrito', 'imagen']
         widgets = {
-            'direccion': Textarea(attrs={'cols': 80, 'rows': 20}),
+            'direccion': Textarea(attrs={'cols': 80, 'rows': 2}),
             'imagen': FileInput(),
         }

@@ -3,11 +3,22 @@
 {% load custom_filters %}
 
 {% block content %}
+<div class="categories">
+    <a href="{% url 'index' %}" class="category">INICIO</a>
+    <a href="#" class="category">ACCESORIOS</a>
+    <a href="#" class="category">BICICLETAS</a>
+    <a href="#" class="category">REPUESTOS</a>
+    <a href="{% url 'arriendo' %}" class="category">ARRIENDO</a>
+    <a href="#" class="category">REPARACIÓN</a>
+</div>
+
+<div class="custom-div">
+    <p class="mini-titulo">Mantenedor de Productos</p>
+  </div>
     <!-- contenido principal -->
     <main role="main">
         <div class="container">
             <section class="text center">
-                <h1 class="cute-font-regular neon">MANTENEDOR DE PRODUCTOS</h1>
                 <br>
 
                 <!-- Formulario de registro de producto -->
@@ -39,7 +50,7 @@
                                         <img src="{% static 'core/img/sin_imagen.jpg' %}" alt="" class="user-image" id="cuadro-imagen">
                                     {% endif %}   
                                     <br> 
-                                    <button class="btn btn-primary boton_registro" onclick="event.preventDefault(); document.getElementById('id_imagen').click();"> Seleccionar imagen </button>  
+                                    <button class="boton_registro" onclick="event.preventDefault(); document.getElementById('id_imagen').click();"> Seleccionar imagen </button>  
                                     {{ form.imagen }}
                                 </div>
                             </div>
@@ -51,9 +62,9 @@
                          <!-- AREA DE BOTONES -->
                         <div class="mt-2 mb-3 text-center">
 
-                            <input class="btn btn-primary boton_registro" type="submit" value="Guardar">                 
+                            <input class="boton_registro" type="submit" value="Guardar">                 
                             {% if form.instance.id %}
-                            <a class="btn btn-primary boton_registro"  href="{% url 'productos' 'eliminar' form.instance.id %}"> Eliminar </a>
+                            <a class="boton_registro"  href="{% url 'productos' 'eliminar' form.instance.id %}"> Eliminar </a>
                             {% endif %}
                     
                         </div>

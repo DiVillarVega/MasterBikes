@@ -3,14 +3,25 @@
 {% load custom_filters %}
 
 {% block content %}
+<div class="categories">
+  <a href="{% url 'index' %}" class="category">INICIO</a>
+  <a href="#" class="category">ACCESORIOS</a>
+  <a href="#" class="category">BICICLETAS</a>
+  <a href="#" class="category">REPUESTOS</a>
+  <a href="{% url 'arriendo' %}" class="category">ARRIENDO</a>
+  <a href="#" class="category">REPARACIÓN</a>
+</div>
+
+<div class="custom-div">
+  <p class="mini-titulo">Mantenedor de Usuarios</p>
+</div>
     <!-- Contenido principal -->
     <main role="main">
         <div class="container">
             <section class="text center">
-                <h1 class="cute-font-regular neon">MANTENEDOR DE USUARIOS</h1>
                 <br>
                 <!-- Formulario de registro de cliente -->
-                <form method="POST" id="formulario_usuarios" enctype="multipart/form-data" class="white-text">
+                <form method="POST" id="formulario_usuarios" enctype="multipart/form-data">
                   {% csrf_token %}
                   <div class="container-fluid">
                       <div class="row">
@@ -32,7 +43,7 @@
                                     <img src="{% static 'core/img/perfil.webp' %}" alt="" class="user-image" id="cuadro-imagen">
                                 {% endif %}
                                 
-                                <button class="btn btn-primary boton_registro" onclick="event.preventDefault(); document.getElementById('id_imagen').click();">Seleccionar imagen</button>
+                                <button class="boton_registro" onclick="event.preventDefault(); document.getElementById('id_imagen').click();">Seleccionar imagen</button>
                             </div>
                             </div>
                         </div>
@@ -40,12 +51,12 @@
                                     <!-- AREA DE BOTONES -->
                                     <div class="mt-2 text-center">
                                       
-                                      <button type="submit" class="btn btn-primary boton_registro"> Guardar </button>
+                                      <button type="submit" class="boton_registro"> Guardar </button>
 
-                                      <a href="{% url 'usuarios' 'crear' '0' %}" class="btn btn-primary boton_registro"> Nuevo </a>
+                                      <a href="{% url 'usuarios' 'crear' '0' %}" class="boton_registro"> Nuevo </a>
 
                                       {% if form_usuario.instance.id %}
-                                        <a class="btn btn-primary boton_registro" href="{% url 'usuarios' 'eliminar' form_usuario.instance.id %}"> Eliminar </a>
+                                        <a class="boton_registro" href="{% url 'usuarios' 'eliminar' form_usuario.instance.id %}"> Eliminar </a>
                                       {% endif %}
                                     
                                     </div>

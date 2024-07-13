@@ -3,17 +3,23 @@
 {% load custom_filters %}
 
 {% block content %}
-    <br>
-    <br>
+<div class="categories">
+    <a href="{% url 'index' %}" class="category">INICIO</a>
+    <a href="#" class="category">ACCESORIOS</a>
+    <a href="#" class="category">BICICLETAS</a>
+    <a href="#" class="category">REPUESTOS</a>
+    <a href="{% url 'arriendo' %}" class="category">ARRIENDO</a>
+    <a href="#" class="category">REPARACIÓN</a>
+</div>
 
-
+<div class="custom-div">
+    <p class="mini-titulo">Mantenedor de Bodega</p>
+  </div>
+  <br>
     <!-- index -->
     <main role="main">
         <div class="container">
             <section class="text center">
-                <h1 class="cute-font-regular neon">MANTENEDOR DE BODEGA</h1>
-                <br>
-
                 
                 <form id="form" method="POST" class="white-text">
                     {% csrf_token %}
@@ -24,12 +30,12 @@
                                 {{ form|as_bootstrap_form }}
 
                                 <div style="display: flex; justify-content: flex-end;">
-                                    <button type="submit" class="btn btn-primary boton_registro">Agregar</button>
+                                    <button type="submit" class="boton_registro">Agregar</button>
                                 </div>
                             </div>
                             <!-- Columna para la imagen -->
                             <div class="col-md-4 text-center">
-                                <img id="cuadro-imagen" src="{% static 'core/img/sin_imagen.jpg' %}" class="img-fluid">
+                                <img id="cuadro-imagen" src="{% static 'core/img/sin_imagen.jpg' %}" class="user-image">
                             </div>
                         </div>
                     </div>

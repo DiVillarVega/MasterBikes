@@ -3,11 +3,22 @@
 {% load custom_filters %}
 
 {% block content %}
+<div class="categories">
+    <a href="{% url 'index' %}" class="category">INICIO</a>
+    <a href="#" class="category">ACCESORIOS</a>
+    <a href="#" class="category">BICICLETAS</a>
+    <a href="#" class="category">REPUESTOS</a>
+    <a href="{% url 'arriendo' %}" class="category">ARRIENDO</a>
+    <a href="#" class="category">REPARACIÓN</a>
+  </div>
+
+  <div class="custom-div">
+    <p class="mini-titulo">Carrito de Compras</p>
+ </div>  
     <!-- Contenido principal -->
     <main role="main">
         <div class="container">
             <section class="text-center">
-                <h1 class="cute-font-regular neon">CARRITO DE COMPRAS</h1>
                 <br>
                 <table class="table table-hover">
                     <thead>
@@ -84,8 +95,8 @@
                 </table>
                 <div class="row">
                     <div class="col text-center">
-                        <a href="{% url 'vaciar_carrito' %}" class="btn btn-primary ancho-160px boton_registro"> Vaciar carrito </a>
-                        <a href="{% url 'comprar_ahora' %}" class="btn btn-primary ancho-160px boton_registro"> Continuar al pago </a>
+                        <a href="{% url 'vaciar_carrito' %}" class="ancho-160px boton_registro"> Vaciar carrito </a>
+                        <a href="{% url 'comprar_ahora' %}" class="ancho-160px boton_registro"> Continuar al pago </a>
                     </div>
                 </div>
 
