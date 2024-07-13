@@ -16,6 +16,7 @@ from .templatetags.custom_filters import formatear_dinero, formatear_numero
 from .tools import eliminar_registro, verificar_eliminar_registro, show_form_errors
 from django.core.mail import send_mail
 
+
 # *********************************************************************************************************#
 #                                                                                                          #
 # INSTRUCCIONES PARA EL ALUMNO, PUEDES SEGUIR EL VIDEO TUTORIAL, COMPLETAR EL CODIGO E INCORPORAR EL TUYO: #

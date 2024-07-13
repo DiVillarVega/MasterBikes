@@ -3,7 +3,19 @@
 {% load custom_filters %}
 
 {% block content %}
-    <h1 class="cute-font-regular neon">MIS COMPRAS</h1>
+<div class="categories">
+    <a href="{% url 'index' %}" class="category">INICIO</a>
+    <a href="#" class="category">ACCESORIOS</a>
+    <a href="#" class="category">BICICLETAS</a>
+    <a href="#" class="category">REPUESTOS</a>
+    <a href="{% url 'arriendo' %}" class="category">ARRIENDO</a>
+    <a href="#" class="category">REPARACIÓN</a>
+</div>
+
+<!-- Contenido principal -->
+<div class="custom-div">
+    <p class="mini-titulo">Mis compras</p>
+</div>
     <br>
     <div class="container-fluid">
 

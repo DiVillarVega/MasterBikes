@@ -4,6 +4,10 @@ from core.templatetags.custom_filters import formatear_dinero
 from django.db import models
 from django.db.models import Min
 from django.db import connection
+from django.core.exceptions import ValidationError
+from django.utils import timezone
+
+
 
 class Categoria(models.Model):
     nombre = models.CharField(max_length=100, blank=False, null=False, verbose_name='Nombre categoría')
@@ -34,6 +38,9 @@ class Talla(models.Model):
     
     def __str__(self):
         return f'{self.nombre}'
+
+
+
 
 class Producto(models.Model):
     categoria = models.ForeignKey(Categoria, on_delete=models.DO_NOTHING, verbose_name='Categoría')
@@ -82,12 +89,25 @@ class Producto(models.Model):
 class Reserva(models.Model):
     producto = models.ForeignKey(Producto, on_delete=models.CASCADE)
     fecha_inicio = models.DateField()
-    fecha_fin = models.DateField()
-    cantidad = models.PositiveIntegerField()    
+    fecha_fin = models.DateField(verbose_name='Fecha de fin')
+    cantidad = models.IntegerField(default=1)
 
 
     def __str__(self):
-        return f'Reserva de {self.producto.nombre} desde {self.fecha_inicio} hasta {self.fecha_termino}'
+        return f'Reserva {self.id} - Producto: {self.producto.nombre}, Cliente: {self.cliente.usuario.username}'
+
+    def clean(self):
+        super().clean()
+        if self.fecha_inicio is not None and self.fecha_fin is not None:
+            if self.fecha_inicio <= timezone.now().date() + timezone.timedelta(days=2):
+                raise ValidationError('La fecha de inicio debe ser al menos dos días después de la fecha actual.')
+            if self.fecha_fin <= self.fecha_inicio:
+                raise ValidationError('La fecha de fin debe ser posterior a la fecha de inicio.')
+
+def validate_future_date(value):
+    if value <= timezone.now().date():
+        raise ValidationError('La fecha debe ser al menos dos días después de la fecha actual.')
+
 
 class Perfil(models.Model):
     USUARIO_CHOICES = [

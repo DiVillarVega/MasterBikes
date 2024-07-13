@@ -118,6 +118,14 @@ html body {
   justify-content: center; /* Centra horizontalmente */
   align-items: center; /* Centra verticalmente */
 }
+.cuadro_precio_ficha2 {
+  border: 2px solid rgb(#dcdcdc);
+  padding: 30px;
+  width: 400px;
+  height: auto;
+  background-color: #fafafa;
+  margin: 20px auto; /* Centra verticalmente */
+}
 
 .cuadro_neon_pequeño {
   border: 1px solid rgb(255, 255, 255);
@@ -969,4 +977,10 @@ footer a {
   width: 100%;
   height: 115px; /* Ajusta la altura según tus necesidades */
   resize: none; /* Opcional: evita que el usuario cambie el tamaño del campo */
+}
+
+.input-lg {
+  font-size: 1.25rem;
+  padding: 10px;
+  width: 150px;
 }
