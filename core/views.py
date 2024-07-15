@@ -15,6 +15,9 @@ from .forms import RegistroUsuarioForm, RegistroPerfilForm
 from .templatetags.custom_filters import formatear_dinero, formatear_numero
 from .tools import eliminar_registro, verificar_eliminar_registro, show_form_errors
 from django.core.mail import send_mail
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+import datetime
 
 
 # *********************************************************************************************************#
@@ -820,3 +823,23 @@ def arriendo(request):
 
     return render(request, 'core/arriendo.html', context)
 
+
+
+@csrf_exempt
+def validar_disponibilidad(request):
+    if request.method == 'POST':
+        producto_id = request.POST.get('producto_id')
+        fecha_inicio = request.POST.get('fecha_inicio')
+        fecha_fin = request.POST.get('fecha_fin')
+        cantidad = request.POST.get('cantidad')
+
+        # Parsear las fechas
+        fecha_inicio = datetime.datetime.strptime(fecha_inicio, '%d-%m-%Y').date()
+        fecha_fin = datetime.datetime.strptime(fecha_fin, '%d-%m-%Y').date()
+
+        # Validar disponibilidad
+        producto = Producto.objects.get(id=producto_id)
+        disponible = producto.disponible_para_fecha(fecha_inicio, fecha_fin, cantidad)
+
+        return JsonResponse({'disponible': disponible})
+    return JsonResponse({'error': 'Método no permitido'}, status=405)

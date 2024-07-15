@@ -3,7 +3,7 @@ from django.contrib.auth.models import User, Permission
 from django.db import connection
 from datetime import date, timedelta
 from random import randint
-from core.models import Categoria, Producto, Carrito, Perfil, Boleta, DetalleBoleta, Bodega, Talla
+from core.models import Categoria, Producto, Carrito, Perfil, Talla, Boleta, DetalleBoleta, Bodega
 
 def eliminar_tabla(nombre_tabla):
     conexion = sqlite3.connect('db.sqlite3')

@@ -52,7 +52,6 @@ class BodegaForm(Form):
 
 
 
-
 class ReservaForm(forms.ModelForm):
     def clean_fecha_fin(self):
         fecha_fin = self.cleaned_data.get('fecha_fin')
@@ -84,9 +83,9 @@ class ReservaForm(forms.ModelForm):
         model = Reserva
         fields = ['fecha_inicio', 'fecha_fin', 'cantidad']
         widgets = {
-            'fecha_inicio': forms.DateInput(attrs={'type': 'text', 'class': 'datepicker'}),
-            'fecha_fin': forms.DateInput(attrs={'type': 'text', 'class': 'datepicker'}),
-            'cantidad': forms.NumberInput(attrs={'min': '1', 'value': '1'})
+            'fecha_inicio': forms.DateInput(attrs={'type': 'text', 'class': 'datepicker form-control'}),
+            'fecha_fin': forms.DateInput(attrs={'type': 'text', 'class': 'datepicker form-control'}),
+            'cantidad': forms.NumberInput(attrs={'min': '1', 'value': '1', 'class': 'form-control'})
         }
 
 
