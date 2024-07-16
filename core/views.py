@@ -893,3 +893,17 @@ def arrendar(request):
         return redirect('ingresar')  # Usa el nombre de la URL en lugar de la vista directamente
     return redirect('misdatos')
 
+@csrf_exempt
+def obtener_stock_producto(request, producto_id):
+    try:
+        producto = Producto.objects.get(id=producto_id)
+        stock = Bodega.objects.filter(producto_id=producto_id).exclude(
+            detalleboleta__isnull=False).count()
+
+        data = {
+            'stock': stock,
+        }
+
+        return JsonResponse(data)
+    except Producto.DoesNotExist:
+        return JsonResponse({'error': 'Producto no encontrado'}, status=404)

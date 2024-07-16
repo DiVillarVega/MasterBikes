@@ -38,6 +38,34 @@ $(document).ready(function() {
         return endDate > startDate;
     }, 'La fecha de fin debe ser posterior a la fecha de inicio');
 
+    
+
+    const urlParts = window.location.pathname.split('/');
+    let producto_id = urlParts[urlParts.length - 1];
+    alert(producto_id);
+    fetch(`/obtener_stock_producto/${producto_id}/`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Error en la respuesta del servidor');
+            }
+            return response.json();
+        })
+        .then(data => {
+            if (data.error) {
+                console.error('Error:', data.error);
+            } else {
+                // Guarda solo la variable 'stock'
+                let stock = data.stock;
+                alert(stock);
+                console.log('Stock del producto:', stock);
+
+                // Puedes usar la variable 'stock' como desees
+                // Por ejemplo, actualizar un elemento HTML
+                document.getElementById('product-stock').innerText = `Stock: ${stock}`;
+            }
+        })
+        .catch(error => console.error('Error:', error));
+
     $('#formulario_ficha').validate({
         rules: {
             'fecha_inicio': {
