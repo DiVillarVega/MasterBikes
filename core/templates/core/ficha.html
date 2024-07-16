@@ -89,7 +89,8 @@
 
             <div class="col-md-4 cuadro_precio_ficha2">
                 {{ html_precio|safe }}  <br><br>
-                {{ html_stock|safe }}  <br><br>
+                {{ html_stock|safe }}  <br>
+                {{ html_estado|safe }}  <br><br>
 
                 <div>
                     <div class="row">
@@ -113,17 +114,15 @@
                             {{ form.cantidad|add_class:"input-lg" }}<br><br>
                         </div>
                     </div>
+                    <div class="text-center">
                     <input type="hidden" id="accion">
                      <a href="{% url 'pago' %}" class="boton_registro2"> 
                         Comprar ahora 
                     </a>
-                    <a href="{% url 'agregar_producto_al_carrito' id %}" class="boton_registro2"> 
-                        Agregar al carrito 
-                        <img src="{% static 'core/img/carrito-boton.png' %}" alt="" width="24" height="24"> 
-                    </a>
+                    </div>
                 </div>
 
-                {{ html_estado|safe }}  <br>
+                
             </div>    
         </div>
     </div>    
