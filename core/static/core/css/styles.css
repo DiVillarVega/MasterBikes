@@ -126,6 +126,11 @@ html body {
   text-align: left;
 }
 
+.letra_grande2 {
+  font-size: 20px;
+
+}
+
 .cuadro_precio_ficha {
   border: 2px solid rgb(#dcdcdc);
   padding: 30px;

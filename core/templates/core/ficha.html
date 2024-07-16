@@ -75,13 +75,15 @@
             </div>
 
             <div class="col-md-4 cuadro_precio_ficha2">
+                
                 {{ html_precio|safe }}  <br><br>
                 <input type="hidden" id="stock_disponible" value="{{ stock_disponible }}">
                 {% if stock_disponible %}
                   En stock:  {{ stock_disponible }} {% if stock_disponible == 1 %} unidad {% else %} unidades {% endif %}
                 {% else %}
-                    AGOTADO
+                    Sin stock
                 {% endif %}
+                <br>
                 {{ html_estado|safe }}  <br><br>
 
                 <div>
