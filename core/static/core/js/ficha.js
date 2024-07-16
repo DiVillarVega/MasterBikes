@@ -38,6 +38,13 @@ $(document).ready(function() {
         return endDate > startDate;
     }, 'La fecha de fin debe ser posterior a la fecha de inicio');
 
+    // Método personalizado para validar que la cantidad no exceda el stock
+    $.validator.addMethod('validarStock', function(value, element) {
+        var cantidad = parseInt(value);        
+        var stockDisponible = parseInt($('#stock_disponible').val());  // Obtener el valor del stock del producto       
+        return cantidad <= stockDisponible;
+    }, 'La cantidad solicitada excede el stock disponible.');
+
     $('#formulario_ficha').validate({
         rules: {
             'fecha_inicio': {
@@ -50,6 +57,11 @@ $(document).ready(function() {
                 date: true,
                 greaterThan: '#fecha_inicio',
             },
+            'cantidad': {
+                required: true,
+                digits: true,
+                validarStock: true  // Usar el método de validación personalizado para el stock
+            }
         },
         messages: {
             'fecha_inicio': {
@@ -62,6 +74,11 @@ $(document).ready(function() {
                 date: 'Ingresa una fecha válida',
                 greaterThan: 'La fecha de fin debe ser posterior a la fecha de inicio',
             },
+            'cantidad': {
+                required: 'Por favor, ingresa la cantidad',
+                digits: 'Ingresa un número entero válido',
+                validarStock: 'La cantidad solicitada excede el stock disponible.'
+            }
         },
         errorPlacement: function(error, element) {
             error.insertAfter(element); // Inserta el mensaje de error después del elemento
@@ -78,14 +95,4 @@ $(document).ready(function() {
         $('#accion').val('agregar-al-carrito');
         $('#formulario_ficha').submit();
     });
-
-    $('#formulario_ficha').submit(function(event) {
-        if (!$(this).valid()) {
-            event.preventDefault();
-            console.log('Formulario no válido');
-        } else {
-            console.log('Formulario válido, enviando...');
-        }
-    });
-
 });

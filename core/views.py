@@ -108,24 +108,44 @@ def arriendo(request):
     return render(request, 'core/arriendo.html', context)
 
 
+# def ficha(request, producto_id):
+#     context = obtener_info_producto(producto_id)
+
+#     if request.method == 'POST':
+#         form = ReservaForm(request.POST)
+
+#         if form.is_valid():
+#             #   reserva = form.save(commit=False)
+#             #   reserva.producto_id = producto_id  # Asumiendo que tienes un campo `producto` en tu modelo Reserva
+#             #   reserva.save()
+#             return redirect('core/misdatos.html')  # Redirige a alguna vista después de guardar la reserva
+#     else:
+#         form = ReservaForm()
+
+#     context['form'] = form
+#     return render(request, 'core/ficha.html', context)
+
 def ficha(request, producto_id):
     context = obtener_info_producto(producto_id)
+
+    stock = Bodega.objects.filter(producto_id=producto_id).exclude(
+        detalleboleta__isnull=False).count()
+
 
     if request.method == 'POST':
         form = ReservaForm(request.POST)
 
         if form.is_valid():
-            #   reserva = form.save(commit=False)
-            #   reserva.producto_id = producto_id  # Asumiendo que tienes un campo `producto` en tu modelo Reserva
-            #   reserva.save()
+            # reserva = form.save(commit=False)
+            # reserva.producto_id = producto_id  # Asumiendo que tienes un campo `producto` en tu modelo Reserva
+            # reserva.save()
             return redirect('core/misdatos.html')  # Redirige a alguna vista después de guardar la reserva
     else:
         form = ReservaForm()
 
     context['form'] = form
+    context['stock_disponible'] = stock  # Asegúrate de que esto es un valor numérico
     return render(request, 'core/ficha.html', context)
-
-
 
 
 def nosotros(request):

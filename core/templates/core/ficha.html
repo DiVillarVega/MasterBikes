@@ -76,7 +76,12 @@
 
             <div class="col-md-4 cuadro_precio_ficha2">
                 {{ html_precio|safe }}  <br><br>
-                {{ html_stock|safe }}  <br>
+                <input type="hidden" id="stock_disponible" value="{{ stock_disponible }}">
+                {% if stock_disponible %}
+                  En stock:  {{ stock_disponible }} {% if stock_disponible == 1 %} unidad {% else %} unidades {% endif %}
+                {% else %}
+                    AGOTADO
+                {% endif %}
                 {{ html_estado|safe }}  <br><br>
 
                 <div>
@@ -98,7 +103,9 @@
                     <div class="row">
                         <div class="col-md-12">
                             {{ form.cantidad.label_tag }}<br>
+                            <div id="cantidad">
                             {{ form.cantidad|add_class:"input-lg" }}<br><br>
+                            </div>
                         </div>
                     </div>
                     <br><br>
@@ -129,12 +136,39 @@
 <script src="{% static 'core/js/ficha.js' %}"></script>  
 <script>
     $(document).ready(function() {
+
+
+        $('#formulario_ficha').submit(function(event) {
+            event.preventDefault();
+
+            if ($(this).valid()) {
+                $.post($(this).attr('action'), $(this).serialize(), function(data) {
+                    window.location.href = "{% url 'arrendar' %}";
+                }).fail(function() {
+                    // Manejo de errores en caso de falla en la validación del servidor
+                });
+            }
+        });
+    });
+</script>
+<script>
+    $(document).ready(function() {
         $('#formulario_ficha').validate({
             // Tus reglas de validación aquí
         });
 
         $('#formulario_ficha').submit(function(event) {
             event.preventDefault();
+
+            // Obtener la cantidad ingresada por el usuario
+            var cantidadSeleccionada = parseInt($('#id_cantidad').val());
+            var stockDisponible = {{ html_stock}};
+
+            // Validar que la cantidad seleccionada sea menor o igual al stock disponible
+            if (cantidadSeleccionada > stockDisponible) {
+                alert('La cantidad seleccionada supera el stock disponible.');
+                return false; // Detiene el envío del formulario
+            }
 
             if ($(this).valid()) {
                 $.post($(this).attr('action'), $(this).serialize(), function(data) {
