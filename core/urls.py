@@ -2,7 +2,7 @@ from django.urls import path
 from .views import arriendo, usuarios, bodega, ventas, boleta, ingresar, usuarios, nosotros, productos, registro
 from .views import misdatos, miscompras, salir, carrito, ficha, index
 from .views import cambiar_estado_boleta, poblar, obtener_productos, eliminar_producto_en_bodega
-from .views import ropa, eliminar_producto_en_carrito, agregar_producto_al_carrito
+from .views import ropa, eliminar_producto_en_carrito, agregar_producto_al_carrito, obtener_stock_producto
 from .views import vaciar_carrito, mipassword, cambiar_password, comprar_ahora, validar_disponibilidad, pago, arrendar
 
 urlpatterns = [
@@ -40,4 +40,5 @@ urlpatterns = [
     path('poblar', poblar, name='poblar'),
     path('validar_disponibilidad/', validar_disponibilidad, name='validar_disponibilidad'),
     path('arrendar', arrendar, name='arrendar'),
+    path('obtener_stock_producto/<int:producto_id>/', obtener_stock_producto, name='obtener_stock_producto'),
 ]

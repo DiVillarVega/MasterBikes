@@ -45,6 +45,7 @@ $(document).ready(function() {
         return cantidad <= stockDisponible;
     }, 'La cantidad solicitada excede el stock disponible.');
 
+
     $('#formulario_ficha').validate({
         rules: {
             'fecha_inicio': {
