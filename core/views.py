@@ -891,4 +891,4 @@ def arrendar(request):
             request, 'Para poder arrendar, primero debes registrarte como cliente.')
         return redirect(ingresar)
     perfil = request.user.perfil
-    return redirect(pago)
+    return redirect(misdatos)
