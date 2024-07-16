@@ -843,3 +843,40 @@ def validar_disponibilidad(request):
 
         return JsonResponse({'disponible': disponible})
     return JsonResponse({'error': 'Método no permitido'}, status=405)
+
+@login_required
+def pago(request):
+
+    if request.method == 'POST':
+        form_usuario = UsuarioForm(request.POST, instance=request.user)
+        form_perfil = RegistroPerfilForm(request.POST, request.FILES, instance=request.user.perfil)
+
+        if form_usuario.is_valid() and form_perfil.is_valid():
+            usuario = form_usuario.save(commit=False)
+            perfil = form_perfil.save(commit=False)
+            usuario.save()
+            perfil.usuario_id = usuario.id
+            perfil.save()
+            if perfil.tipo_usuario in ['Administrador', 'Superusuario']:
+                tipo_cuenta = perfil.tipo_usuario
+            else:
+                tipo_cuenta = 'CLIENTE PREMIUM' if perfil.subscrito else 'cliente'
+            messages.success(request, f'¡Tu cuenta de {tipo_cuenta} ha sido actualizada con éxito!')
+            return redirect(pago)
+        else:
+            messages.error(request, 'No fue posible guardar tus datos')
+            show_form_errors(request, [form_usuario, form_perfil])
+
+    if request.method == 'GET':
+
+       form_usuario = UsuarioForm(instance=request.user)
+       form_perfil = RegistroPerfilForm(instance=request.user.perfil)
+
+    # CREAR: variable de contexto para enviar formulario de usuario y perfil
+    context = {
+        'form_usuario': form_usuario,
+        'form_perfil': form_perfil,
+        'perfil': request.user.perfil, 
+    }
+
+    return render(request, 'core/pago.html', context)

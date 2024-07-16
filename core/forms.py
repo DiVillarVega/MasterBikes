@@ -248,3 +248,5 @@ class PerfilForm(ModelForm):
             'direccion': Textarea(attrs={'cols': 80, 'rows': 2}),
             'imagen': FileInput(),
         }
+
+  

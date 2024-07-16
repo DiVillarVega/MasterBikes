@@ -3,7 +3,7 @@ from .views import arriendo, usuarios, bodega, ventas, boleta, ingresar, usuario
 from .views import misdatos, miscompras, salir, carrito, ficha, index
 from .views import cambiar_estado_boleta, poblar, obtener_productos, eliminar_producto_en_bodega
 from .views import ropa, eliminar_producto_en_carrito, agregar_producto_al_carrito
-from .views import vaciar_carrito, mipassword, cambiar_password, comprar_ahora, validar_disponibilidad
+from .views import vaciar_carrito, mipassword, cambiar_password, comprar_ahora, validar_disponibilidad, pago
 
 urlpatterns = [
     path('', index, name='index'),
@@ -24,6 +24,7 @@ urlpatterns = [
          cambiar_estado_boleta, name='cambiar_estado_boleta'),
     path('ingresar', ingresar, name='ingresar'),
     path('misdatos', misdatos, name='misdatos'),
+    path('pago', pago, name='pago'),
     path('mipassword', mipassword, name='mipassword'),
     path('miscompras', miscompras, name='miscompras'),
     path('salir', salir, name='salir'),
