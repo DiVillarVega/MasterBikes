@@ -10,17 +10,19 @@
     <a href="#" class="category">REPUESTOS</a>
     <a href="{% url 'arriendo' %}" class="category">ARRIENDO</a>
     <a href="#" class="category">REPARACIÓN</a>
-  </div>
+</div>
 
-  <div class="custom-div">
+<div class="custom-div">
     <p class="mini-titulo">Datos de Pago</p>
- </div> 
-    <!-- contenido principal -->    
-    <main role="main">
-        <div class="container">
-            <section class="text center cuadro_login4">
-                <br>
-                <h1>Todos los campos son necesarios</h1><br>
+</div> 
+
+<main role="main">
+    <div class="container">
+        <section class="text center cuadro_login4">
+            <br>
+            <h1>Todos los campos son necesarios</h1><br>
+            <form id="formulario_pago" method="post">
+                {% csrf_token %}
                 <label for="comuna">Comuna</label>
                 <select id="comuna" name="comuna" class="form-control">
                     <option value="">Seleccione una comuna</option>
@@ -31,53 +33,56 @@
                 </select>
                 <br>
                 <div class="input-group">     
-                  <input type="text" name="text" class="input">                
-                  <label class="label">Nombre del Titular de la Tarjeta</label>                  
+                    <input type="text" name="nombre_titular" class="input">                
+                    <label class="label">Nombre del Titular de la Tarjeta</label>                  
                 </div>
                 <br>
                 <div class="text-center">
-                  <img src="{% static 'core/img/pago3.png' %}" style="height: 90px;" alt="">
-              </div>
+                    <img src="{% static 'core/img/pago3.png' %}" style="height: 90px;" alt="">
+                </div>
                 <br>
                 <div class="input-group">     
-                  <input type="text" name="text" class="input">                
-                  <label class="label">Número de la Tarjeta</label>                  
+                    <input type="text" name="numero_tarjeta" class="input">                
+                    <label class="label">Número de la Tarjeta</label>                  
                 </div>
+                <div class="input-group"> 
+                  <label class="label" for="fecha_mes">Fecha de Caducidad (MM/AAAA)</label>
+                </div>
+                <br>
                 <div class="input-group">                  
-                  <label for="fecha" class="label">Fecha de Caducidad (MM/AAAA)</label> 
-                  <select id="fecha" name="fecha" class="form-control">
-                    <option value="">Mes</option>
-                    <option value="fecha1">Enero</option>
-                    <option value="fecha2">Febrero</option>
-                    <option value="fecha3">Marzo</option>
-                    <!-- Agrega más opciones según sea necesario -->
-                </select>
-                <select id="fecha" name="fecha" class="form-control">
-                  <option value="">Año</option>
-                  <option value="fecha1">2024</option>
-                  <option value="fecha2">2025</option>
-                  <option value="fecha3">2026</option>
-                  <!-- Agrega más opciones según sea necesario -->
-              </select>                     
+                    <label class="label" for="fecha_mes">Fecha de Caducidad (MM/AAAA)</label> 
+                    <select id="fecha_mes" name="fecha_mes" class="form-control">
+                        <option value="">Mes</option>
+                        <option value="enero">Enero</option>
+                        <option value="febrero">Febrero</option>
+                        <option value="marzo">Marzo</option>
+                        <!-- Agrega más opciones según sea necesario -->
+                    </select>
+                    <select id="fecha_ano" name="fecha_ano" class="form-control">
+                        <option value="">Año</option>
+                        <option value="2024">2024</option>
+                        <option value="2025">2025</option>
+                        <option value="2026">2026</option>
+                        <!-- Agrega más opciones según sea necesario -->
+                    </select>                     
                 </div>
                 <div class="input-group">     
-                  <input type="text" name="text" class="input">                
-                  <label class="label">Código de Seguridad de la tarjeta (CVC2/CVV2)</label>                  
+                    <input type="text" name="codigo_seguridad" class="input">                
+                    <label class="label">Código de Seguridad de la tarjeta (CVC2/CVV2)</label>                  
                 </div>
 
-
                 <div class="row">
-                  <div class="col text-center">
-                      <button type="update" class="boton_registro">Pagar</button>
-                  </div>
-              </div>
-            </section>
-        </div>
-    </main>
+                    <div class="col text-center">
+                        <button type="submit" class="boton_registro">Pagar</button>
+                    </div>
+                </div>
+            </form>
+        </section>
+    </div>
+</main>
 {% endblock content %}
 
 {% block script %}
     <script src="{% static 'core/js/validacion_misdatos.js'%}"></script>
     <script src="{% static 'core/js/script.js'%}"></script>
 {% endblock script %}
-

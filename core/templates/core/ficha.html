@@ -57,7 +57,7 @@
     <a href="#" class="category">REPARACIÓN</a>
 </div>
 
-<form method="post" id="formulario_ficha" class="cuadro_ficha">        
+<form method="post" id="formulario_ficha" class="cuadro_ficha" >        
     {% csrf_token %}
     <div class="container-fluid">
         <div class="row">
@@ -104,9 +104,6 @@
                     <br><br>
                     <div class="text-center">
                     <input type="hidden" id="accion">
-                     <a href="{% url 'arrendar' %}" class="boton_registro2"> 
-                        Arrendar 
-                    </a>
                     <div class="col text-center">
                         <button type="submit" class="boton_registro2">Arrendar</button>
                     </div>
@@ -130,5 +127,24 @@
 {% block script %}
 <script src="{% static 'core/js/script.js' %}"></script>
 <script src="{% static 'core/js/ficha.js' %}"></script>  
+<script>
+    $(document).ready(function() {
+        $('#formulario_ficha').validate({
+            // Tus reglas de validación aquí
+        });
+
+        $('#formulario_ficha').submit(function(event) {
+            event.preventDefault();
+
+            if ($(this).valid()) {
+                $.post($(this).attr('action'), $(this).serialize(), function(data) {
+                    window.location.href = "{% url 'arrendar' %}";
+                }).fail(function() {
+                    // Manejo de errores en caso de falla en la validación del servidor
+                });
+            }
+        });
+    });
+</script>
 {% endblock %}
 

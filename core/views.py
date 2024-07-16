@@ -113,7 +113,7 @@ def ficha(request, producto_id):
 
     if request.method == 'POST':
         form = ReservaForm(request.POST)
-        
+
         if form.is_valid():
             #   reserva = form.save(commit=False)
             #   reserva.producto_id = producto_id  # Asumiendo que tienes un campo `producto` en tu modelo Reserva
@@ -886,12 +886,10 @@ def pago(request):
 
 def arrendar(request):
     if es_personal_autenticado_y_activo(request.user):
-        messages.error(request, f'Para poder arrendar debes tener cuenta de Cliente, pero tu cuenta es de {
-                       request.user.perfil.tipo_usuario}.')
-        return redirect(index)
+        messages.error(request, f'Para poder arrendar debes tener cuenta de Cliente, pero tu cuenta es de {request.user.perfil.tipo_usuario}.')
+        return redirect('index')  # Usa el nombre de la URL en lugar de la vista directamente
     elif es_usuario_anonimo(request.user):
-        messages.info(
-            request, 'Para poder arrendar, primero debes registrarte como cliente.')
-        return redirect(ingresar)
-    perfil = request.user.perfil
-    return redirect(misdatos)
+        messages.info(request, 'Para poder arrendar, primero debes registrarte como cliente.')
+        return redirect('ingresar')  # Usa el nombre de la URL en lugar de la vista directamente
+    return redirect('misdatos')
+
