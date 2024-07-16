@@ -89,7 +89,7 @@ class Producto(models.Model):
 class Reserva(models.Model):
     producto = models.ForeignKey(Producto, on_delete=models.CASCADE)
     fecha_inicio = models.DateField()
-    fecha_fin = models.DateField(verbose_name='Fecha de fin')
+    fecha_fin = models.DateField()
     cantidad = models.IntegerField(default=1)
 
 

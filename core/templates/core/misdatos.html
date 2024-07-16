@@ -13,7 +13,7 @@
   </div>
 
   <div class="custom-div">
-    <p class="mini-titulo">Mis datos</p>
+    {% comment %} <p class="mini-titulo">Mis datos</p> {% endcomment %}
  </div> 
     <!-- contenido principal -->    
     <main role="main">
@@ -22,7 +22,10 @@
                 <br>
 
                 <!-- Formulario de registro de cliente -->
-                <form method="POST" id="formulario_misdatos" enctype="multipart/form-data">
+                <form method="POST" id="formulario_misdatos" enctype="multipart/form-data" class="cuadro_login3">
+                    <div class="letra_grande">
+                        Completa tus datos
+                    </div><br><br>
                     {% csrf_token %}
                     <div class="container-fluid">
                         <div class="row">
@@ -35,7 +38,7 @@
                             </div>
                             
                             <!-- foto de perfil -->
-                            <div class="col-sm-12 col-md-3">
+                            <div class="col-sm-12 col-md-3 text-center">
                                 <br>
                                 <div class="row">
                                     <div class="col-sm-12" style="height: 220px">
@@ -48,14 +51,14 @@
 
                         </div>
 
-                        <br><br>
+                        <br><br><br>
                         <div class="row">
                             <div class="col text-center">
-                                <a href="{% url 'pago' %}" class="boton_registro">Pagar</a>
+                                <a href="{% url 'pago' %}" class="boton_registro">Ir al pago</a>
                             </div>
                         </div>
                     </div>
-                    <br><br><br><br>
+                    <br><br>
                 </form>
             </section>
         </div>

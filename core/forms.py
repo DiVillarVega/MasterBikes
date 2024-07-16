@@ -53,32 +53,32 @@ class BodegaForm(Form):
 
 
 class ReservaForm(forms.ModelForm):
-    def clean_fecha_fin(self):
-        fecha_fin = self.cleaned_data.get('fecha_fin')
-        fecha_inicio = self.cleaned_data.get('fecha_inicio')
+    # def clean_fecha_fin(self):
+    #     fecha_fin = self.cleaned_data.get('fecha_fin')
+    #     fecha_inicio = self.cleaned_data.get('fecha_inicio')
 
-        if fecha_fin is None:
-            return fecha_fin
+        # if fecha_fin is None:
+        #     return fecha_fin
 
-        # Validación para que la fecha fin sea posterior a la fecha de inicio
-        if fecha_inicio and fecha_fin <= fecha_inicio:
-            raise forms.ValidationError('La fecha de fin debe ser posterior a la fecha de inicio.')
+        # # Validación para que la fecha fin sea posterior a la fecha de inicio
+        # if fecha_inicio and fecha_fin <= fecha_inicio:
+        #     raise forms.ValidationError('La fecha de fin debe ser posterior a la fecha de inicio.')
 
-        return fecha_fin
+        # return fecha_fin
 
-    def clean(self):
-        cleaned_data = super().clean()
-        fecha_inicio = cleaned_data.get('fecha_inicio')
-        fecha_fin = cleaned_data.get('fecha_fin')
+    # def clean(self):
+    #     cleaned_data = super().clean()
+    #     fecha_inicio = cleaned_data.get('fecha_inicio')
+    #     fecha_fin = cleaned_data.get('fecha_fin')
 
-        if fecha_inicio is not None and fecha_fin is not None:
-            # Validación para que la fecha de inicio sea al menos dos días después de la fecha actual
-            if fecha_inicio <= timezone.now().date() + timezone.timedelta(days=2):
-                raise forms.ValidationError('La fecha de inicio debe ser al menos dos días después de la fecha actual.')
+        # if fecha_inicio is not None and fecha_fin is not None:
+        #     # Validación para que la fecha de inicio sea al menos dos días después de la fecha actual
+        #     if fecha_inicio <= timezone.now().date() + timezone.timedelta(days=2):
+        #         raise forms.ValidationError('La fecha de inicio debe ser al menos dos días después de la fecha actual.')
 
-            # Validación para que la fecha fin sea posterior a la fecha de inicio
-            if fecha_fin <= fecha_inicio:
-                raise forms.ValidationError('La fecha de fin debe ser posterior a la fecha de inicio.')
+        #     # Validación para que la fecha fin sea posterior a la fecha de inicio
+        #     if fecha_fin <= fecha_inicio:
+        #         raise forms.ValidationError('La fecha de fin debe ser posterior a la fecha de inicio.')
     class Meta:
         model = Reserva
         fields = ['fecha_inicio', 'fecha_fin', 'cantidad']

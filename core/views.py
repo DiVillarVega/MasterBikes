@@ -113,16 +113,19 @@ def ficha(request, producto_id):
 
     if request.method == 'POST':
         form = ReservaForm(request.POST)
+        
         if form.is_valid():
-            reserva = form.save(commit=False)
-            reserva.producto_id = producto_id  # Asumiendo que tienes un campo `producto` en tu modelo Reserva
-            reserva.save()
-            return redirect('core/ficha.html')  # Redirige a alguna vista después de guardar la reserva
+            #   reserva = form.save(commit=False)
+            #   reserva.producto_id = producto_id  # Asumiendo que tienes un campo `producto` en tu modelo Reserva
+            #   reserva.save()
+            return redirect('core/misdatos.html')  # Redirige a alguna vista después de guardar la reserva
     else:
         form = ReservaForm()
 
     context['form'] = form
     return render(request, 'core/ficha.html', context)
+
+
 
 
 def nosotros(request):
